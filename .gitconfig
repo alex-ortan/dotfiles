@@ -1,0 +1,11 @@
+[user]
+	name = Alexandra Ortan
+	email = alexandraortan@gmail.com
+[core]
+    # Use vim as git commit editor
+	editor = vim
+[merge]
+    # Use vimdiff for merge conflicts
+	tool = vimdiff
+[mergetool]
+	prompt = true
