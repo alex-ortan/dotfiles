@@ -10,13 +10,17 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -lh'
-alias la='ls -Alh'
+# shortcuts for long-for ls
+alias ll='ls -lh'       # use longlist format and human-readable file sizes
+alias la='ls -lAh'      # do not ignore entries starting with .
+alias lt='ls -lth'      # sort by time
 
 # Alias for side-folder git for dotfile management
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg-git/ --work-tree=$HOME'
+
+# cd to the root of the git repository
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 # Shortcuts for finding files
 function f {
