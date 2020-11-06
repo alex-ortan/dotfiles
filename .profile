@@ -1,5 +1,5 @@
 # ~/.profile: executed by the command interpreter for login shells.
-# NOTE: all tmux shells are  login shell
+# NOTE: all tmux shells are  login shell and therefore source this file
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
 # see /usr/share/doc/bash/examples/startup-files for examples.
@@ -16,6 +16,8 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
+
+export DWD="/home/alex/SynologyDrive"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then

@@ -13,7 +13,7 @@ esac
 # -D detaches any other clients that are attached
 # -s is for specifying the session name, 'main' in this case
 if [ ! $TMUX ]; then
-    exec tmux new-session -A -D -s main
+    cd $DWD; exec tmux new-session -A -D -s main
 fi
 
 # check the window size after each command and, if necessary,
