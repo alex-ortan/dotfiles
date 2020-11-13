@@ -9,3 +9,5 @@ set tabstop=4       " how wide a Tab character is defnied
 set softtabstop=4   " how far cursor moves while typing Tab
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
+
+let g:tmux_navigator_no_wrap = 1

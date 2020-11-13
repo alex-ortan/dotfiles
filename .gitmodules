@@ -1,0 +1,3 @@
+[submodule "/home/alex/.vim/plugin/vim-tmux-navigator"]
+	path = /home/alex/.vim/plugin/vim-tmux-navigator
+	url = git@github.com:alex-ortan/vim-tmux-navigator.git
