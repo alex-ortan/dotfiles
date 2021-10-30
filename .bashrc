@@ -22,7 +22,10 @@ shopt -s checkwinsize
 
 export EDITOR=vim
 
+
+#####################
 ## COMMAND HISTORY ##
+#####################
 
 # Enable incremental history search with up/down arrows (also Readline goodness)
 # Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
@@ -58,7 +61,9 @@ bind "set show-all-if-ambiguous on"
 bind "set mark-symlinked-directories on"
 
 
+#################################
 ## BETTER DIRECTORY NAVIGATION ##
+#################################
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.

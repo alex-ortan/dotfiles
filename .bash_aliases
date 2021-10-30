@@ -15,6 +15,10 @@ alias ll='ls -lh'       # use longlist format and human-readable file sizes
 alias la='ls -lAh'      # do not ignore entries starting with .
 alias lt='ls -lth'      # sort by time
 
+# shortcuts for common cli commands
+alias ..='cd ..'
+alias '?'=man
+
 # Alias for side-folder git for dotfile management
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg-git/ --work-tree=$HOME'
