@@ -1,0 +1,18 @@
+[url $GITHUB_SHORT_URL]
+	insteadof = $GITHUB_URL
+[core]
+	filemode = false
+	eol = lf
+[init]
+	defaultBranch = main
+[user]
+	name = $GITHUB_NAME
+	email = $GITHUB_EMAIL
+[core]
+    # Use vim as git commit editor
+	editor = vim
+[merge]
+    # Use vimdiff for merge conflicts
+	tool = vimdiff
+[mergetool]
+	prompt = true
