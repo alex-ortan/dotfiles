@@ -1,13 +1,15 @@
 [url $GITHUB_SHORT_URL]
 	insteadof = $GITHUB_URL
+[user]
+	name = $GITHUB_NAME
+	email = $GITHUB_EMAIL
+[http]
+    proxy = $GITHUB_PROXY
 [core]
 	filemode = false
 	eol = lf
 [init]
 	defaultBranch = main
-[user]
-	name = $GITHUB_NAME
-	email = $GITHUB_EMAIL
 [core]
     # Use vim as git commit editor
 	editor = vim
