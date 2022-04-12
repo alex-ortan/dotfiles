@@ -1,5 +1,6 @@
 # dotfiles
 
+## Install dotfiles from this repo
 
 Clone this repo with all of its submodules, and update the submodules to their latest version:
 ```
@@ -22,3 +23,11 @@ Install dotfiles with bashdot.
 env env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
 
+## Accessing github without typing credentials everytime
+
+Create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for the device you just cloned this repo to, if you don't already have one. Add your token to the remote URL:
+```
+git remote rm origin
+git remote add origin https://alex-ortan:<YOURTOKEN>@github.com/alex-ortan/dotfiles.git
+git push --set-upstream origin main
+```
