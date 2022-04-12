@@ -23,11 +23,21 @@ Install dotfiles with bashdot.
 env env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
 
-## Accessing github without typing credentials everytime
+## Github
 
-Create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for the device you just cloned this repo to, if you don't already have one. Add your token to the remote URL:
+To make your github development life easier, you'll want to create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on, if you din't already. This token will allow you to access github without typing credentials everytime.
+
+To use this token, either use secure single sign-on (SAML SSO) if your github instance supports it. Otherwise, you can add it manually to each repository's remote URL like so:
+
 ```
 git remote rm origin
 git remote add origin https://alex-ortan:<YOURTOKEN>@github.com/alex-ortan/dotfiles.git
 git push --set-upstream origin main
+```
+
+In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the globel `.gitcinfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
+```
+[user]
+    name = alex-ortan
+    email = aortan@umn.edu
 ```
