@@ -1,2 +1,4 @@
 *.rendered
 *.secrets
+*netrwhist
+default/vim/pack/minpac/start/
