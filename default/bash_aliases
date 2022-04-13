@@ -19,10 +19,6 @@ alias lt='ls -lth'      # sort by time
 alias ..='cd ..'
 alias '?'=man
 
-# Alias for side-folder git for dotfile management
-# https://www.atlassian.com/git/tutorials/dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.cfg-git/ --work-tree=$HOME'
-
 # cd to the root of the git repository
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
