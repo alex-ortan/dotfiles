@@ -1,6 +1,6 @@
 [submodule "default/vim/plugin/vim-tmux-navigator-ao"]
-	path = default/Vim/plugin/vim-tmux-navigator-ao
-	url = git@github.com:alex-ortan/vim-tmux-navigator.git
+	path = default/vim/plugin/vim-tmux-navigator-ao
+	url = https://github.com/alex-ortan/vim-tmux-navigator.git
 [submodule "bashdot"]
 	path = bashdot
 	url = https://github.com/bashdot/bashdot
