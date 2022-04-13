@@ -11,10 +11,13 @@ git submodule update --init --recursive --remote --merge --jobs 8
 git pull --recurse-submodules
 ```
 
-Create a `.secrets` file where you define all the variables needed to fill in the `.template` files.
+Create a `.secrets` file where you define all the variables needed to fill in the `.template` files. Here's an example, but modify the values as needed:
 ```
-GITHUB_NAME="the username you use for the github account you want to connect to by default"
-GITHUB_EMAIL="the corresponding email"
+GITHUB_NAME="alex-ortan"
+GITHUB_EMAIL="aortan@umn.edu"
+GITHUB_OLD_URL="https://github.com"
+GITHUB_NEW_URL='"https://github.com"'
+GITHUB_PROXY=""
 etc
 ```
 
@@ -22,6 +25,9 @@ Install dotfiles with bashdot.
 ```
 env env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
+
+This command is idempotent - meaning in particular that you can rerun it without side effects.
+
 
 ## Github
 

@@ -1,5 +1,5 @@
-[url $GITHUB_SHORT_URL]
-	insteadof = $GITHUB_URL
+[url $GITHUB_NEW_URL]
+	insteadof = $GITHUB_OLD_URL
 [user]
 	name = $GITHUB_NAME
 	email = $GITHUB_EMAIL
