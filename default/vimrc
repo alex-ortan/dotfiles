@@ -27,7 +27,6 @@ function! PackInit() abort
   packadd minpac
 
   call minpac#init()
-  " call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
   call minpac#add('vimwiki/vimwiki')

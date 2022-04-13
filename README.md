@@ -47,3 +47,12 @@ In some cases, say if you commit to both a work and personal github account, you
     name = alex-ortan
     email = aortan@umn.edu
 ```
+
+## Vim
+
+Install vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
+```
+:PackUpdate
+:PackStatus
+```
+
