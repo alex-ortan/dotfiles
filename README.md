@@ -13,6 +13,7 @@ git pull --recurse-submodules
 
 Create a `.secrets` file where you define all the variables needed to fill in the `.template` files. Here's an example, but modify the values as needed:
 ```
+DWD="/home/alex/MyFavoriteDirectory"
 GITHUB_NAME="alex-ortan"
 GITHUB_EMAIL="aortan@umn.edu"
 GITHUB_OLD_URL="https://github.com"
