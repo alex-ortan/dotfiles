@@ -24,7 +24,7 @@ etc
 
 Install dotfiles with bashdot.
 ```
-env env $(cat .secrets | xargs)  bashdot/bashdot install default
+env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
 
 This command is idempotent - meaning in particular that you can rerun it without side effects.
@@ -42,7 +42,7 @@ git remote add origin https://alex-ortan:<YOURTOKEN>@github.com/alex-ortan/dotfi
 git push --set-upstream origin main
 ```
 
-In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the globel `.gitcinfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
+In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the global `.gitconfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
 ```
 [user]
     name = alex-ortan
