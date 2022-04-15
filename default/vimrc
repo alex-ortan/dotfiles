@@ -46,6 +46,7 @@ function! PackInit() abort
 
   " Additional plugins here.
   call minpac#add('vimwiki/vimwiki')
+  call minpac#add('christoomey/vim-tmux-navigator')
 endfunction
 
 " Define user commands for updating/cleaning the plugins.
@@ -70,7 +71,4 @@ hi VimwikiHeader3 ctermfg=Blue
 hi VimwikiHeader4 ctermfg=Yellow
 hi VimwikiHeader5 ctermfg=Red
 hi VimwikiHeader6 ctermfg=Brown
-
-" Vim & Tmux
-" let g:tmux_navigator_no_wrap = 1
 
