@@ -4,7 +4,7 @@
 
 Clone this repo with all of its submodules, and update the submodules to their latest version:
 ```
-git clone --recurse-submodules --remote-submodules --jobs 8 https://github.com/alex-ortan/dotfiles ~/dotfiles
+git clone --recurse-submodules --remote-submodules --jobs 8 git@github.com:alex-ortan/dotfiles.git
 
 git submodule sync
 git submodule update --init --recursive --remote --merge --jobs 8
@@ -24,7 +24,7 @@ etc
 
 Install dotfiles with bashdot.
 ```
-env env $(cat .secrets | xargs)  bashdot/bashdot install default
+env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
 
 This command is idempotent - meaning in particular that you can rerun it without side effects.
@@ -32,17 +32,21 @@ This command is idempotent - meaning in particular that you can rerun it without
 
 ## Github
 
-To make your github development life easier, you'll want to create a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on, if you din't already. This token will allow you to access github without typing credentials everytime.
+To make your github development life easier, you'll want to [set up and use a pair of ssh keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh). This way you won't have to type your password every time.
 
-To use this token, either use secure single sign-on (SAML SSO) if your github instance supports it. Otherwise, you can add it manually to each repository's remote URL like so:
+1. Check for existing ssh keys. Run `ls -al ~/.ssh` and check for `id_rsa.pub`.
+2. If do not already have them, generate ssh keys:
+   ```
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+3. Once you have ssh keys, add the private key to the ssh agent:
+   ```
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_rsa
+   ```
+4. Then, add the public key to github: copy the contents of the `id_rsa.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
 
-```
-git remote rm origin
-git remote add origin https://alex-ortan:<YOURTOKEN>@github.com/alex-ortan/dotfiles.git
-git push --set-upstream origin main
-```
-
-In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the globel `.gitcinfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
+In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the global `.gitconfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
 ```
 [user]
     name = alex-ortan
