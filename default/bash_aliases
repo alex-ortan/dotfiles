@@ -27,3 +27,5 @@ function f {
   find . -type f | grep -v .svn | grep -v .git | grep -i $1
 }
 
+# Shortcuts for python
+alias jn='jupyter notebook'
