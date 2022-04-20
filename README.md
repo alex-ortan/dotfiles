@@ -60,20 +60,13 @@ To make your github development life easier, you'll want to [set up and use a pa
 
 If you cannot use ssh for some reason, you'll have to use the https protocol. If you use https, you can authenticate via a personal access token (PAT). [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on.
 
-To avoid typing the username and PAT every time you need to authenticate, use the [github cli](https://github.com/cli/cli). Follow the instructions to [install gh](https://github.com/cli/cli/blob/trunk/docs/install_linux.md). You may need to disable any vpn's for the install and authentication to work:
-```
-gh auth login
-? What account do you want to log into? GitHub.com
-? What is your preferred protocol for Git operations? HTTPS
-? Authenticate Git with your GitHub credentials? Yes
-? How would you like to authenticate GitHub CLI? Paste an authentication token
-Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
-The minimum required scopes are 'repo', 'read:org', 'workflow'.
-? Paste your authentication token: ****************************************
-- gh config set -h github.com git_protocol https
-- ✓ Configured git protocol
-- ✓ Logged in as alex-ortan
-```
+To avoid typing the username and PAT every time you need to authenticate, use the [GitHub CLI](https://github.com/cli/cli). Follow the instructions to [install GitHub CLI](https://github.com/cli/cli/blob/trunk/docs/install_linux.md). You may need to disable any vpn's for the install and authentication to work.
+
+GitHub CLI will automatically store your Git credentials for you when you choose HTTPS as your preferred protocol for Git operations and answer "yes" to the prompt asking if you would like to authenticate to Git with your GitHub credentials.
+
+In the command line, enter `gh auth login`, then follow the prompts.
+1. When prompted for your preferred protocol for Git operations, select `HTTPS`.
+2. When asked if you would like to authenticate to Git with your GitHub credentials, enter `Y`
 
 
 ## Vim
