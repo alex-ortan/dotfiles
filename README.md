@@ -32,6 +32,15 @@ This command is idempotent - meaning in particular that you can rerun it without
 
 ## Github
 
+In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the global `.gitconfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
+```
+[user]
+    name = alex-ortan
+    email = aortan@umn.edu
+```
+
+### Ssh
+
 To make your github development life easier, you'll want to [set up and use a pair of ssh keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh). This way you won't have to type your password every time.
 
 1. Check for existing ssh keys. Run `ls -al ~/.ssh` and check for `id_rsa.pub`.
@@ -46,12 +55,6 @@ To make your github development life easier, you'll want to [set up and use a pa
    ```
 4. Then, add the public key to github: copy the contents of the `id_rsa.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
 
-In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the global `.gitconfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
-```
-[user]
-    name = alex-ortan
-    email = aortan@umn.edu
-```
 
 ## Vim
 
