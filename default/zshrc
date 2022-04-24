@@ -1,7 +1,9 @@
-# Lines configured by zsh-newuser-install
+# Keep long command history
 HISTFILE=~/.histfile
-HISTSIZE=100000
+HISTSIZE=1000000
 SAVEHIST=1000000
+setopt APPEND_HISTORY
+
 setopt autocd extendedglob nomatch
 unsetopt beep
 bindkey -v
