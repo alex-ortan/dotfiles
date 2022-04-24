@@ -34,7 +34,6 @@ set softtabstop=4   " how far cursor moves while typing Tab
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
 
-
 "" ==============================================================================
 "" PLUGINS
 "" ==============================================================================
@@ -47,6 +46,8 @@ function! PackInit() abort
   " Additional plugins here.
   call minpac#add('vimwiki/vimwiki')
   call minpac#add('christoomey/vim-tmux-navigator')
+  call minpac#add('dracula/vim', { 'name': 'dracula' })
+  call minpac#add('lifepillar/vim-solarized8', { 'name': 'solarized8' })
 endfunction
 
 " Define user commands for updating/cleaning the plugins.
@@ -57,6 +58,16 @@ command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
 " Plugin settings here.
+
+" Colorscheme
+" ===========
+colorscheme dracula
+
+" Use a sensible colorscheme in vimdiff
+if &diff
+    colorscheme evening
+endif
+
 
 " Vimwiki
 " =======
