@@ -2,3 +2,4 @@
 *.secrets
 *netrwhist
 default/vim/pack/minpac/start/
+default/jupyter/migrated
