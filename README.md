@@ -72,6 +72,21 @@ In the command line, enter `gh auth login`, then follow the prompts.
 3. When asked how you would like to authenticate, select `Paste an authentication token`.
 
 
+## AWS access
+
+To make access to AWS or other S3 cloud storage easier, store your access keys for different profiles in `~/,aws/credentials`:
+```
+[default]
+aws_access_key_id = $AWS_ACCESS_KEY_ID
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+
+[dev]
+aws_access_key_id = $AWS_ACCESS_KEY_ID_DEV
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY_DEV
+
+etc
+```
+
 ## Vim
 
 Install vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
