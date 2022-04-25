@@ -29,3 +29,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+# Needed for crfsuite
+export LD_LIBRARY_PATH=/usr/local/lib
