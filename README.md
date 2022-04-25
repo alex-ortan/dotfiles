@@ -66,7 +66,8 @@ GitHub CLI will automatically store your Git credentials for you when you choose
 
 In the command line, enter `gh auth login`, then follow the prompts.
 1. When prompted for your preferred protocol for Git operations, select `HTTPS`.
-2. When asked if you would like to authenticate to Git with your GitHub credentials, enter `Y`
+2. When asked if you would like to authenticate to Git with your GitHub credentials, enter `Y`.
+3. When asked how you would like to authenticate, select `Paste an authentication token`.
 
 
 ## Vim
