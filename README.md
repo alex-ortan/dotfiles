@@ -74,7 +74,7 @@ In the command line, enter `gh auth login`, then follow the prompts.
 
 ## AWS access
 
-To make access to AWS or other S3 cloud storage easier, store your access keys for different profiles in `~/,aws/credentials`:
+To make access to AWS or other S3 cloud storage easier, store your access keys for different profiles in `~/.aws/credentials`:
 ```
 [default]
 aws_access_key_id = $AWS_ACCESS_KEY_ID
