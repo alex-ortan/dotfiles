@@ -19,9 +19,10 @@ HTTP_PROXY=""
 NO_PROXY=""
 GITHUB_NAME="alex-ortan"
 GITHUB_EMAIL="aortan@umn.edu"
-GITHUB_OLD_URL="https://github.com"
-GITHUB_NEW_URL='"https://github.com"'
+GITHUB_SHORT_URL="https://github.com"
+GITHUB_URL='"https://github.com"'
 GITHUB_PROXY=""
+ROOT_CA=""
 etc
 ```
 
@@ -62,15 +63,9 @@ To make your github development life easier, you'll want to [set up and use a pa
 
 If you cannot use ssh for some reason, you'll have to use the https protocol. If you use https, you can authenticate via a personal access token (PAT). [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on.
 
-To avoid typing the username and PAT every time you need to authenticate, use the [GitHub CLI](https://github.com/cli/cli). Follow the instructions to [install GitHub CLI](https://github.com/cli/cli/blob/trunk/docs/install_linux.md). You may need to disable any vpn's for the install and authentication to work.
+To avoid typing the username and PAT every time you need to authenticate, use git's [credential store helper](https://git-scm.com/docs/git-credential-store). The first time you access a non-public repository, or try to perform an operation which requires authentication, Git will prompt you to provide credentials. You will provide your Personal Access Token (not your password) as the username, and no password, and this will be stored by the 'store' credential helper. You will see this stored in ~/.git-credentials, so you must ensure that this file is kept confidential.
 
-GitHub CLI will automatically store your Git credentials for you when you choose HTTPS as your preferred protocol for Git operations and answer "yes" to the prompt asking if you would like to authenticate to Git with your GitHub credentials.
-
-In the command line, enter `gh auth login`, then follow the prompts.
-1. When prompted for your preferred protocol for Git operations, select `HTTPS`.
-2. When asked if you would like to authenticate to Git with your GitHub credentials, enter `Y`.
-3. When asked how you would like to authenticate, select `Paste an authentication token`.
-
+*Note:* You may be tempted to use the more secure GitHub CLI intead of the credentials store helper to store your credentials locally. But you can't use it behind a proxy.
 
 ## AWS access
 

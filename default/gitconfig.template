@@ -1,20 +1,32 @@
-[url $GITHUB_NEW_URL]
-	insteadof = $GITHUB_OLD_URL
 [user]
 	name = $GITHUB_NAME
 	email = $GITHUB_EMAIL
-[http]
+
+[init]
+	defaultBranch = main
+
+# To void typing in
+[credential]
+    helper = store
+
+[url $GITHUB_SHORT_URL]
+	insteadof = $GITHUB_URL
+
+[http "https://github.com"]
     proxy = $GITHUB_PROXY
+    sslCAinfo = $ROOT_CA
+
 [core]
 	filemode = false
 	eol = lf
-[init]
-	defaultBranch = main
+
 [core]
     # Use vim as git commit editor
 	editor = vim
+
 [merge]
     # Use vimdiff for merge conflicts
 	tool = vimdiff
+
 [mergetool]
 	prompt = true

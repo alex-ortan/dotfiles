@@ -1,4 +1,0 @@
-export HTTP{,S}_PROXY=$HTTP_PROXY
-export http{,s}_proxy=$HTTP_PROXY
-
-export {NO_PROXY,no_proxy}=$NO_PROXY
