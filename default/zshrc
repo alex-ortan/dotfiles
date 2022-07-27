@@ -1,3 +1,7 @@
+#####################
+## COMMAND HISTORY ##
+#####################
+
 # Keep long command history
 HISTFILE=~/.histfile
 HISTSIZE=1000000
@@ -14,3 +18,6 @@ zstyle :compinstall filename '/home/alex/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/alex/.local/bin/mc mc

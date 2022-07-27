@@ -161,3 +161,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Add completion functionality for the minio client (mc)
+complete -C /home/alex/.local/bin/mc mc
