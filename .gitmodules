@@ -4,3 +4,9 @@
 [submodule ".vim/pack/minpac/opt/minpac"]
 	path = default/vim/pack/minpac/opt/minpac
 	url = https://github.com/k-takata/minpac.git
+[submodule "default/zgen"]
+	path = default/zgen
+	url = https://github.com/tarjoilija/zgen
+[submodule "dracula-zsh"]
+	path = dracula-zsh
+	url = https://github.com/dracula/zsh.git

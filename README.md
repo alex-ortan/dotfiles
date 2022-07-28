@@ -3,10 +3,14 @@
 
 ## Install dotfiles from this repo
 
-Clone this repo with all of its submodules, and update the submodules to their latest version:
+Clone this repo with all of its submodules:
 ```
 git clone --recurse-submodules --remote-submodules --jobs 8 git@github.com:alex-ortan/dotfiles.git
+cd dotfiles
+```
 
+Update the submodules to their latest version:
+```
 git submodule sync
 git submodule update --init --recursive --remote --merge --jobs 8
 git pull --recurse-submodules
@@ -32,6 +36,33 @@ env $(cat .secrets | xargs)  bashdot/bashdot install default
 ```
 
 This command is idempotent - meaning in particular that you can rerun it without side effects.
+
+
+### Adding a submodule
+
+```
+git submodule add https://github.com/tarjoilija/zgen default/zgen 
+
+env $(cat .secrets | xargs)  bashdot/bashdot install default
+```
+
+
+### Troubleshooting zsh
+
+Set stricter permissions:
+```
+compaudit | xargs chmod go-w 
+```
+Manually add dracula theme from dracula-zsh submodule to zsh:
+```
+cp dracula-zsh/dracula.zsh-theme default/zgen/robbyrussell/oh-my-zsh-master/themes/
+cp dracula-zsh/lib default/zgen/robbyrussell/oh-my-zsh-master/themes/
+```
+Zsh might require additional fonts to work in WSL:
+```
+sudo apt-get install fonts-powerline
+sudo apt-get install powerline
+```
 
 
 ## Github
@@ -90,3 +121,13 @@ Install vim plugins with minpac by opening a vim editor and execute these comman
 :PackStatus
 ```
 
+## WSL
+
+For everything to work nicely in WSL, you need to install and use the Windows Terminal.
+
+For everything to look pretty, install the [Dracula theme for Windows Terminal](https://draculatheme.com/windows-terminal).
+
+Enable permissions to be set from Linux.
+```
+sudo cp $PWD/wsl.conf /etc/
+```

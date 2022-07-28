@@ -1,12 +1,42 @@
-#####################
-## COMMAND HISTORY ##
-#####################
+## ==============================================================================
+## COMMAND HISTORY
+## ==============================================================================
 
 # Keep long command history
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
 setopt APPEND_HISTORY
+
+## ==============================================================================
+## LOAD PLUGINS
+## ==============================================================================
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+    
+    # theme
+    # zgen load dracula/zsh
+    zgen oh-my-zsh themes/dracula
+
+fi
+
+## ==============================================================================
+## MISC
+## ==============================================================================
+
+## set colors for LS_COLORS
+#eval `dircolors ~/.dircolors`
+
+ZSH_THEME="dracula"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="agnoster"
 
 setopt autocd extendedglob nomatch
 unsetopt beep
