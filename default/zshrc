@@ -9,23 +9,19 @@ SAVEHIST=1000000
 setopt APPEND_HISTORY
 
 ## ==============================================================================
+## ALIASES
+## ==============================================================================
+
+# source aliases common to all shells (e.g. zsh and bash)
+if [ -f ~/.sh_aliases ]; then
+    . ~/.sh_aliases
+fi
+
+## ==============================================================================
 ## LOAD PLUGINS
 ## ==============================================================================
 
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
-
-# if the init scipt doesn't exist
-if ! zgen saved; then
-    echo "Creating a zgen save"
-
-    zgen oh-my-zsh
-    
-    # theme
-    # zgen load dracula/zsh
-    zgen oh-my-zsh themes/dracula
-
-fi
+source "$HOME/.slimzsh/slim.zsh"
 
 ## ==============================================================================
 ## MISC
@@ -34,7 +30,7 @@ fi
 ## set colors for LS_COLORS
 #eval `dircolors ~/.dircolors`
 
-ZSH_THEME="dracula"
+#ZSH_THEME="dracula"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 
@@ -45,8 +41,7 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/alex/.zshrc'
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinitcompinit
 # End of lines added by compinstall
 
 autoload -U +X bashcompinit && bashcompinit
