@@ -55,8 +55,8 @@ compaudit | xargs chmod go-w
 ```
 Manually add dracula theme from dracula-zsh submodule to zsh:
 ```
-cp dracula-zsh/dracula.zsh-theme default/zgen/robbyrussell/oh-my-zsh-master/themes/
-cp dracula-zsh/lib default/zgen/robbyrussell/oh-my-zsh-master/themes/
+cp dracula-zsh/dracula.zsh-theme default/zgen/robbyrussell/oh-my-zsh-master/themes
+cp -r dracula-zsh/lib default/zgen/robbyrussell/oh-my-zsh-master/themes
 ```
 Zsh might require additional fonts to work in WSL:
 ```
