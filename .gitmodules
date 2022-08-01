@@ -10,6 +10,3 @@
 [submodule "dracula-zsh"]
 	path = dracula-zsh
 	url = https://github.com/dracula/zsh.git
-[submodule "default/slimzsh"]
-	path = default/slimzsh
-	url = https://github.com/changs/slimzsh.git
