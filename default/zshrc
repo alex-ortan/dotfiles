@@ -1,3 +1,6 @@
+export EDITOR=vim
+export VISUAL=vim
+
 ## ==============================================================================
 ## COMMAND HISTORY
 ## ==============================================================================
@@ -8,6 +11,7 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt APPEND_HISTORY
 
+
 ## ==============================================================================
 ## ALIASES
 ## ==============================================================================
@@ -17,11 +21,37 @@ if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
 fi
 
+
 ## ==============================================================================
 ## LOAD PLUGINS
 ## ==============================================================================
 
+source "${HOME}/.zgen/zgen.zsh"
 source "$HOME/.slimzsh/slim.zsh"
+
+# if the init script doesn't exist
+if ! zgen saved; then
+
+  # specify plugins here
+  zgen load zsh-users/zsh-completions
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-history-substring-search
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
+
+## ==============================================================================
+## CONFIGURE PLUGINS
+## ==============================================================================
+
+# set up and down keys for zsh-history-substring-search
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 
 ## ==============================================================================
 ## MISC
@@ -36,7 +66,14 @@ source "$HOME/.slimzsh/slim.zsh"
 
 setopt autocd extendedglob nomatch
 unsetopt beep
+
+# Vim shortcuts for the CLI
 bindkey -v
+
+# Fix home and end keys
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/alex/.zshrc'

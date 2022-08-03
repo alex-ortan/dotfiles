@@ -11,7 +11,7 @@ if &compatible
   set nocompatible
 endif
 
-" Defines autocommands that'll get executed when a file matching a given pattern 
+" Defines autocommands that will get executed when a file matching a given pattern 
 " is opened. These autocommands source in turn the filetype plugins associated to 
 " the filetype recognized
 filetype plugin on
@@ -24,15 +24,15 @@ syntax enable       " enable syntax highlighting with custom color settings
 
 " Search and highlight while typing while ignoring case when only lower case used
 set ignorecase      " ignore case in search patterns
-set smartcase       " use case-sensisitve search if pattern contains upper case
-set incsearch       " incremental aearch
+set smartcase       " use case-sensitive search if pattern contains upper case
+set incsearch       " incremental search
 set hlsearch        " highlight all search pattern matches
 
 " Activate spellchecker
 set spell spelllang=en_us
 
 " Use spaces for tabs
-set tabstop=4       " how wide a Tab character is defnied
+set tabstop=4       " how wide a Tab character is defined
 set softtabstop=4   " how far cursor moves while typing Tab
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
@@ -50,7 +50,7 @@ function! PackInit() abort
   call minpac#add('vimwiki/vimwiki')
   call minpac#add('christoomey/vim-tmux-navigator')
   call minpac#add('dracula/vim', { 'name': 'dracula' })
-  call minpac#add('lifepillar/vim-solarized8', { 'name': 'solarized8' })
+  " call minpac#add('lifepillar/vim-solarized8', { 'name': 'solarized8' })
 endfunction
 
 " Define user commands for updating/cleaning the plugins.

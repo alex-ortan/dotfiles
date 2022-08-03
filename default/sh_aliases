@@ -27,5 +27,10 @@ function f {
   find . -type f | grep -v .svn | grep -v .git | grep -i $1
 }
 
+# Shortcuts for finding files
+function g {
+  grep --exclude-dir={.git,.venv,.ipynb_checkpoints} -rn . -e $1
+}
+
 # Shortcuts for python
 alias jn='jupyter notebook'
