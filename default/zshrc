@@ -46,9 +46,10 @@ fi
 ## CONFIGURE PLUGINS
 ## ==============================================================================
 
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
 # set up and down keys for zsh-history-substring-search
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
@@ -59,10 +60,6 @@ bindkey '^[[B' history-substring-search-down
 
 ## set colors for LS_COLORS
 #eval `dircolors ~/.dircolors`
-
-#ZSH_THEME="dracula"
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
 
 setopt autocd extendedglob nomatch
 unsetopt beep
