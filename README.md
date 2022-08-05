@@ -99,15 +99,6 @@ etc
 ```
 
 
-## Vim
-
-Install vim pull --recurse-submodule plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
-```
-:PackUpdate
-:PackStatus
-```
-
-
 ## WSL
 
 For everything to work nicely in WSL, you need to install and use the Windows Terminal.
@@ -117,6 +108,21 @@ For everything to look pretty, install the [Dracula theme for Windows Terminal](
 Enable permissions to be set from Linux.
 ```
 sudo cp $PWD/wsl.conf /etc/
+```
+
+
+## Fish
+
+To install and configure fish:
+```
+sudo apt install fish
+fish_config prompt choose
+```
+then follow the instructions.
+
+If doing this on WSl, might need to set this somewhere:
+```
+file://wsl%24/Ubuntu-20.04
 ```
 
 
@@ -152,6 +158,15 @@ The slimzsh submodule is relying on a deprecated branch (master) of the pure rep
 ```
 cd default/slimzsh
 git submodule set-branch --branch main pure
+```
+
+
+## Vim
+
+Install vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
+```
+:PackUpdate
+:PackStatus
 ```
 
 
