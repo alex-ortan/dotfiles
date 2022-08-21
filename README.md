@@ -30,11 +30,14 @@ ROOT_CA=""
 etc
 ```
 
-Install dotfiles with bashdot.
+Install dotfiles with bashdot. If using bash, run:
+```bash
+env $(cat .secrets | xargs) bashdot/bashdot install default
 ```
-env $(cat .secrets | xargs)  bashdot/bashdot install default
+If using fish, run:
+```fish
+eval (cat .secrets) bashdot/bashdot install default
 ```
-
 This command is idempotent - meaning in particular that you can rerun it without side effects.
 
 
@@ -133,7 +136,7 @@ fish_config prompt choose
 ```
 then follow the instructions.
 
-If doing this on WSl, might need to set this somewhere:
+If doing this on WSL, might need to set this somewhere:
 ```
 file://wsl%24/Ubuntu-20.04
 ```

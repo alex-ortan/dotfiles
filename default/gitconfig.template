@@ -5,7 +5,7 @@
 [init]
 	defaultBranch = main
 
-# To void typing in
+# To avoid typing in credentials
 [credential]
     helper = store
 
