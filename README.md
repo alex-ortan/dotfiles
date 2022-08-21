@@ -40,10 +40,23 @@ This command is idempotent - meaning in particular that you can rerun it without
 
 ### Adding a submodule
 
+To add a new submodule:
 ```
-git submodule add https://github.com/tarjoilija/zgen default/zgen 
+git submodule add https://github.com/jorgebucaran/fisher fisher
+```
 
-env $(cat .secrets | xargs)  bashdot/bashdot install default
+If you add a submodule inside one of the profiles (e.g. default) and want that to show up as a dotfile, don't forget to rerun the `bashdot install` command above. 
+
+By default, submodules will pull from the master branch of a repository. If you want to change that, you can do:
+```
+git submodule set-branch main fisher
+```
+or manually edit the `.gitmodules` file to add the branch line:
+```
+[submodule "fisher"]
+    path = fisher
+    url = https://github.com/jorgebucaran/fisher
+    branch = main
 ```
 
 
@@ -123,6 +136,12 @@ then follow the instructions.
 If doing this on WSl, might need to set this somewhere:
 ```
 file://wsl%24/Ubuntu-20.04
+```
+
+To install the fisher plugin manager, included in this repo as a submodule:
+```
+source fisher/functions/fisher.fish
+fisher install fisher/
 ```
 
 

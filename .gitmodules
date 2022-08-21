@@ -10,3 +10,6 @@
 [submodule "default/slimzsh"]
 	path = default/slimzsh
 	url = https://github.com/changs/slimzsh.git
+[submodule "fisher"]
+	path = fisher
+	url = https://github.com/jorgebucaran/fisher
