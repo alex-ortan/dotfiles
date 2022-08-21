@@ -1,6 +1,7 @@
 # dotfiles
 
 
+
 ## Install dotfiles from this repo
 
 Clone this repo with all of its submodules:
@@ -41,6 +42,7 @@ eval (cat .secrets) bashdot/bashdot install default
 This command is idempotent - meaning in particular that you can rerun it without side effects.
 
 
+
 ### Adding a submodule
 
 To add a new submodule:
@@ -61,6 +63,7 @@ or manually edit the `.gitmodules` file to add the branch line:
     url = https://github.com/jorgebucaran/fisher
     branch = main
 ```
+
 
 
 ## GitHub
@@ -99,6 +102,7 @@ To avoid typing the username and PAT every time you need to authenticate, use gi
 *Note:* You may be tempted to use the more secure GitHub CLI instead of the credentials store helper to store your credentials locally. But you can't use it behind a proxy.
 
 
+
 ## AWS access
 
 To make access to AWS or other S3 cloud storage easier, store your access keys for different profiles in `~/.aws/credentials`:
@@ -115,6 +119,7 @@ etc
 ```
 
 
+
 ## WSL
 
 For everything to work nicely in WSL, you need to install and use the Windows Terminal.
@@ -127,25 +132,47 @@ sudo cp $PWD/wsl.conf /etc/
 ```
 
 
+
 ## Fish
 
-To install and configure fish:
+Install the latest version of fish by first adding the fish-shell ppa:
 ```
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt update
 sudo apt install fish
+```
+
+Configure fish by running the `fish_config` and following the instructions:
+```
 fish_config prompt choose
 ```
-then follow the instructions.
 
-If doing this on WSL, might need to set this somewhere:
-```
-file://wsl%24/Ubuntu-20.04
-```
-
-To install the fisher plugin manager, included in this repo as a submodule:
+Install plugins using the fisher plugin manager, included in this repo as a submodule:
 ```
 source fisher/functions/fisher.fish
 fisher install fisher/
+fisher install acomagu/fish-async-prompt
 ```
+
+
+### Troubleshooting
+
+1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
+    This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `pyton3` version:
+    ```
+    sudo python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
+    ```
+2. The `apt-add-repository` command times out because of a connection issue. 
+   This happens when you're behind a proxy. To make sure `apt-add-repository` uses your proxy, you have to set the `HTTP_PROXY` environment variable appropriately, and make sure tell `sudo` to preserve the environment with the -E option:
+   ```
+   epxort HTTPS_PROXY=YOUR_OWN_PROXY
+   sudo -E python3.8 /usr/bin/apt-add-repositoryppa:fish-shell/release-3
+   ```
+3. The `fish_config` command fails. If you're on WSL, might need to set this somewhere:
+   ```
+   file://wsl%24/Ubuntu-20.04
+   ```
+
 
 
 ## ZSH
@@ -167,12 +194,14 @@ sudo apt-get install fonts-powerline
 sudo apt-get install powerline
 ```
 
+
 ### zgen
 
 Run this every time you add or remove zgen plugins:
 ```
 zgen reset
 ```
+
 
 ### slimzsh
 
@@ -181,6 +210,7 @@ The slimzsh submodule is relying on a deprecated branch (master) of the pure rep
 cd default/slimzsh
 git submodule set-branch --branch main pure
 ```
+
 
 
 ## Vim
