@@ -154,7 +154,7 @@
 #                        standard library module, which allows setting of the
 #                        BROWSER environment variable to override it.
 #  Default: ''
-# c.NotebookApp.browser = ''
+c.NotebookApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe %s'
 
 ## The full path to an SSL/TLS certificate file.
 #  Default: ''
