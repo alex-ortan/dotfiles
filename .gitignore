@@ -1,5 +1,9 @@
 *.rendered
 *.secrets
 *netrwhist
-default/vim/pack/minpac/start/
+default/config/gh/
+default/config/htop/
+default/config/pip/
+default/config/wslu
 default/jupyter/migrated
+default/vim/pack/minpac/start/
