@@ -147,12 +147,12 @@ For everything to look pretty, install the [Dracula theme for Windows Terminal](
 
 [Optional] Reuse existing WSL settings:
 ```
-cp $PWD/settings.json /mnt/c/Users/$USERNAME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
+cp default/windows_terminal_settings.json /mnt/c/Users/$USERNAME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
 ```
 
 Enable permissions to be set from Linux.
 ```
-sudo cp $PWD/wsl.conf /etc/
+sudo cp default/wsl.conf /etc/
 ```
 
 
