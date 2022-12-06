@@ -23,6 +23,7 @@
 [core]
     # Use vim as git commit editor
 	editor = vim
+	autocrlf = true
 
 [merge]
     # Use vimdiff for merge conflicts
