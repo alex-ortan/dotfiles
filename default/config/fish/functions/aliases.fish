@@ -13,6 +13,11 @@ function jn
     jupyter notebook
 end
 
+# Start jupyter lab
+function jj
+    jupyter lab
+end
+
 # Shortcut for finding files
 function f
   find . -type f | grep -v .svn | grep -v .git | grep -i $argv

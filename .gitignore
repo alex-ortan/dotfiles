@@ -6,5 +6,6 @@ default/config/htop/
 default/config/pip/
 default/config/wslu
 default/jupyter/migrated
+default/jupyter/lab
 default/vim/pack/minpac/start/
 default/config/nvim/pack/minpac/start/
