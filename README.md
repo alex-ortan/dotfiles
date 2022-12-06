@@ -1,8 +1,24 @@
-# dotfiles
+Contents
+========
+
+- [Install dotfiles from this repo](#Install dotfiles from this repo)
+    - [Adding a submodule](#Install dotfiles from this repo#Adding a submodule)
+- [GitHub](#GitHub)
+    - [Ssh](#GitHub#Ssh)
+    - [HTTPS](#GitHub#HTTPS)
+- [AWS access](#AWS access)
+- [WSL](#WSL)
+- [Fish](#Fish)
+    - [Troubleshooting](#Fish#Troubleshooting)
+- [ZSH](#ZSH)
+    - [zgen](#ZSH#zgen)
+    - [slimzsh](#ZSH#slimzsh)
+- [Vim](#Vim)
 
 
+Install dotfiles from this repo
+===============================
 
-## Install dotfiles from this repo
 
 Clone this repo with all of its submodules:
 ```
@@ -43,7 +59,7 @@ This command is idempotent - meaning in particular that you can rerun it without
 
 
 
-### Adding a submodule
+## Adding a submodule
 
 To add a new submodule:
 ```
@@ -66,7 +82,8 @@ or manually edit the `.gitmodules` file to add the branch line:
 
 
 
-## GitHub
+GitHub
+======
 
 In some cases, say if you commit to both a work and personal github account, you'll want to change the name/email you use for a specific repository to values other than the ones in the global `.gitconfig` file. To do that, edit the `.git/config` file inside each repository where you want custom values to add these lines:
 ```
@@ -76,7 +93,7 @@ In some cases, say if you commit to both a work and personal github account, you
 ```
 
 
-### Ssh
+## Ssh
 
 To make your github development life easier, you'll want to [set up and use a pair of ssh keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh). This way you won't have to type your password every time.
 
@@ -93,7 +110,7 @@ To make your github development life easier, you'll want to [set up and use a pa
 4. Then, add the public key to github: copy the contents of the `id_rsa.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
 
 
-### HTTPS
+## HTTPS
 
 If you cannot use ssh for some reason, you'll have to use the https protocol. If you use https, you can authenticate via a personal access token (PAT). [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on.
 
@@ -103,7 +120,8 @@ To avoid typing the username and PAT every time you need to authenticate, use gi
 
 
 
-## AWS access
+AWS access
+==========
 
 To make access to AWS or other S3 cloud storage easier, store your access keys for different profiles in `~/.aws/credentials`:
 ```
@@ -120,11 +138,17 @@ etc
 
 
 
-## WSL
+WSL
+===
 
 For everything to work nicely in WSL, you need to install and use the Windows Terminal.
 
 For everything to look pretty, install the [Dracula theme for Windows Terminal](https://draculatheme.com/windows-terminal).
+
+[Optional] Reuse existing WSL settings:
+```
+cp $PWD/settings.json /mnt/c/Users/$USERNAME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/
+```
 
 Enable permissions to be set from Linux.
 ```
@@ -133,7 +157,9 @@ sudo cp $PWD/wsl.conf /etc/
 
 
 
-## Fish
+Fish
+====
+
 
 Install the latest version of fish by first adding the fish-shell ppa:
 ```
@@ -155,7 +181,7 @@ fisher install acomagu/fish-async-prompt
 ```
 
 
-### Troubleshooting
+## Troubleshooting
 
 1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
     This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `pyton3` version:
@@ -175,7 +201,8 @@ fisher install acomagu/fish-async-prompt
 
 
 
-## ZSH
+ZSH
+===
 
 You might need to set stricter permissions for zsh to work properly:
 ```
@@ -195,7 +222,7 @@ sudo apt-get install powerline
 ```
 
 
-### zgen
+## zgen
 
 Run this every time you add or remove zgen plugins:
 ```
@@ -203,7 +230,7 @@ zgen reset
 ```
 
 
-### slimzsh
+## slimzsh
 
 The slimzsh submodule is relying on a deprecated branch (master) of the pure repo, so that needs to be switched to an existing branch (main):c
 ```
@@ -213,9 +240,21 @@ git submodule set-branch --branch main pure
 
 
 
-## Vim
+Vim
+===
 
 Install vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
+```
+:PackUpdate
+:PackStatus
+```
+
+Neovim
+======
+
+Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), making sure it is executable, and placing it in your working directory `$DWD`.
+
+Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
 ```
 :PackUpdate
 :PackStatus

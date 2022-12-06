@@ -1,3 +1,8 @@
+# Remap vi command to neovim
+function vi
+    $DWD/nvim.appimage $argv
+end
+
 # Source local virtual environment
 function s
     source .venv/bin/activate.fish

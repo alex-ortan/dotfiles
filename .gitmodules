@@ -14,3 +14,6 @@
 	path = fisher
 	url = https://github.com/jorgebucaran/fisher
 	branch = main
+[submodule "default/config/nvim/pack/minpac/opt/minpac"]
+	path = default/config/nvim/pack/minpac/opt/minpac
+	url = https://github.com/k-takata/minpac.git

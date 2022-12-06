@@ -7,3 +7,4 @@ default/config/pip/
 default/config/wslu
 default/jupyter/migrated
 default/vim/pack/minpac/start/
+default/config/nvim/pack/minpac/start/

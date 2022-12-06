@@ -1,35 +1,14 @@
 "" ==============================================================================
-"" SETTINGS
-"" ==============================================================================
-
-" Normally this if-block is not needed, because `:set nocp` is done
-" automatically when .vimrc is found. However, this might be useful
-" when you execute `vim -u .vimrc` from the command line.
-if &compatible
-  " `:set nocp` has many side effects. Therefore this should be done
-  " only when 'compatible' is set.
-  set nocompatible
-endif
-
-" Defines autocommands that will get executed when a file matching a given pattern 
-" is opened. These autocommands source in turn the filetype plugins associated to 
-" the filetype recognized
-filetype plugin on
-
-
-"" ==============================================================================
 "" EDITING & MOVING
 "" ==============================================================================
-syntax enable       " enable syntax highlighting with custom color settings
 
 " Search and highlight while typing while ignoring case when only lower case used
 set ignorecase      " ignore case in search patterns
 set smartcase       " use case-sensitive search if pattern contains upper case
-set incsearch       " incremental search
-set hlsearch        " highlight all search pattern matches
 
 " Activate spellchecker
 set spell spelllang=en_us
+set spellcapcheck=
 
 " Use spaces for tabs
 set tabstop=4       " how wide a Tab character is defined
@@ -40,6 +19,7 @@ set expandtab       " convert tab characters to spaces
 " Add vertical line
 :set colorcolumn=120    " highlight column after 120 characters to 
 :highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
 
 "" ==============================================================================
 "" PLUGINS
@@ -52,9 +32,7 @@ function! PackInit() abort
 
   " Additional plugins here.
   call minpac#add('vimwiki/vimwiki')
-  call minpac#add('christoomey/vim-tmux-navigator')
   call minpac#add('dracula/vim', { 'name': 'dracula'})
-  "call minpac#add('lifepillar/vim-solarized8', { 'name': 'solarized8' })
 
 endfunction
 
@@ -65,22 +43,33 @@ command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
-" Plugin settings here.
+
+" Plugin settings here
+" ====================
+
 
 " Colorscheme
 " ===========
 
-packadd! dracula
-" disable background set by dracula
-" (see https://vi.stackexchange.com/questions/16108/neovim-gray-background)
 let g:dracula_colorterm = 0
 colorscheme dracula
+
 
 " Vimwiki
 " =======
 
+" Documentation: https://raw.githubusercontent.com/vimwiki/vimwiki/master/doc/vimwiki.txt
+
 " Set default directory for wiki files
 let g:vimwiki_list = [{'path': "$DWD/wiki"}]
+
+" Specify different syntax for different file extensions
+" Note that vimwiki uses the underlined syntax for markdown headers (https://github.github.com/gfm/)
+" let g:vimwiki_ext2syntax = {'.wiki': 'media', '.md': 'markdown'}
+
+" If you don't want markdown files to be handled by vimwiki:
+let g:vimwiki_ext2syntax = {'.wiki': 'media'}
+
 
 " Manually set colors for each heading level; default is all the same color
 hi VimwikiHeader1 ctermfg=Green
