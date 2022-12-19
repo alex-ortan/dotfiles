@@ -26,5 +26,5 @@ end
 # Shortcut for finding text in files
 function g
   set -l exclude **.pyc
-  grep --exclude-dir={.git,.venv,.ipynb_checkpoints,.docs} --exclude=$exclude -rn . -e $argv
+  grep --exclude-dir={.git,.venv,.ipynb_checkpoints,.docs,.pyc} --exclude=$exclude -rn . -e $argv
 end

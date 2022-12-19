@@ -20,6 +20,9 @@ set expandtab       " convert tab characters to spaces
 :set colorcolumn=120    " highlight column after 120 characters to 
 :highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
+" Disable mouse
+set mouse=
+
 
 "" ==============================================================================
 "" PLUGINS
