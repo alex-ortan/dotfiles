@@ -16,6 +16,16 @@ set softtabstop=4   " how far cursor moves while typing Tab
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
 
+" Explicitly set the amount of indentation added automatically in python
+" - lines after a parenthesis is open are indented only one more than
+"   the parenthesis line (default is to add two indentations)
+" https://neovim.io/doc/user/indent.html#ft-python-indent
+" https://stackoverflow.com/questions/71974087/neovim-auto-indentation-nuances
+let g:python_indent = {}
+let g:python_indent.closed_paren_align_last_line = v:false
+let g:python_indent.continue = 'shiftwidth()'
+let g:python_indent.open_paren = 'shiftwidth()'
+
 " Add vertical line
 :set colorcolumn=120    " highlight column after 120 characters to 
 :highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
