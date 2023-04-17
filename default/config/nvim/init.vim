@@ -47,6 +47,9 @@ function! PackInit() abort
   call minpac#add('vimwiki/vimwiki')
   call minpac#add('dracula/vim', { 'name': 'dracula'})
 
+  " Some configurations for the pylsp language server
+  call minpac#add('neovim/nvim-lspconfig')
+
 endfunction
 
 " Define user commands for updating/cleaning the plugins.
@@ -92,3 +95,13 @@ hi VimwikiHeader4 ctermfg=Yellow
 hi VimwikiHeader5 ctermfg=Red
 hi VimwikiHeader6 ctermfg=Brown
 
+
+
+" Language Server Protocol
+" ========================
+
+lua << EOF
+
+require'lspconfig'.pylsp.setup{}
+
+EOF
