@@ -58,7 +58,6 @@ eval (cat .secrets) bashdot/bashdot install default
 This command is idempotent - meaning in particular that you can rerun it without side effects.
 
 
-
 ## Adding a submodule
 
 To add a new submodule:
@@ -184,7 +183,7 @@ fisher install acomagu/fish-async-prompt
 ## Troubleshooting
 
 1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
-    This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `pyton3` version:
+    This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `python3` version:
     ```
     sudo python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
     ```
@@ -260,4 +259,13 @@ Install plugins with minpac by opening a neovim editor and execute these command
 :PackStatus
 ```
 
+Python
+======
 
+If you use python, this is what you need to do to install the [pylsp](https://github.com/python-lsp/python-lsp-server) Language Server for it. This assumes you already 
+have python 3.7+ installed on your system.
+
+```bash
+pip install "python-lsp-server[all]"
+pip install python-lsp-ruff
+```
