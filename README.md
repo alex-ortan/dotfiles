@@ -169,7 +169,7 @@ sudo apt install fish
 
 Configure fish by running the `fish_config` and following the instructions:
 ```
-fish_config prompt choose
+fish_config prompt choose arrow
 ```
 
 Install plugins using the fisher plugin manager, included in this repo as a submodule:
@@ -193,9 +193,9 @@ fisher install acomagu/fish-async-prompt
    epxort HTTPS_PROXY=YOUR_OWN_PROXY
    sudo -E python3.8 /usr/bin/apt-add-repositoryppa:fish-shell/release-3
    ```
-3. The `fish_config` command fails. If you're on WSL, might need to set this somewhere:
+3. The `fish_config` command fails. If you're on WSL, might need to change to update the `fileurl` variable in `/usr/share/fish/tools/web_config/webconfig.py` to:
    ```
-   file://wsl%24/Ubuntu-20.04
+   fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
    ```
 
 
