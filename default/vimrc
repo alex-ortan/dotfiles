@@ -70,11 +70,11 @@ command! PackStatus packadd minpac | call minpac#status()
 " Colorscheme
 " ===========
 
-packadd! dracula
+" packadd! dracula
 " disable background set by dracula
 " (see https://vi.stackexchange.com/questions/16108/neovim-gray-background)
 let g:dracula_colorterm = 0
-colorscheme dracula
+" colorscheme dracula
 
 " Vimwiki
 " =======
