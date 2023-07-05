@@ -102,6 +102,20 @@ hi VimwikiHeader6 ctermfg=Brown
 
 lua << EOF
 
-require'lspconfig'.pylsp.setup{}
+-- TODO: use ruff-lsp instead of python-lsp-ruff
+local lspconfig = require('lspconfig')
+lspconfig.pylsp.setup{
+    settings = {
+        pylsp = {
+            plugins = {
+                ruff = {
+                    enabled = true,
+                    extendSelect = { "I" },
+                    lineLength = 120
+                }
+            }
+        }
+    }
+}
 
 EOF
