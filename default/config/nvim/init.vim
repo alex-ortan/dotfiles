@@ -33,6 +33,9 @@ let g:python_indent.open_paren = 'shiftwidth()'
 " Disable mouse
 set mouse=
 
+" Setting for diffing (vi -d)
+set diffopt+=iwhiteall  " ignore all whitespace differences
+
 
 "" ==============================================================================
 "" PLUGINS
