@@ -165,11 +165,17 @@ Install the latest version of fish by first adding the fish-shell ppa:
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
 sudo apt install fish
+fish
 ```
 
 Configure fish by running the `fish_config` and following the instructions:
 ```
 fish_config prompt choose arrow
+```
+
+Make it the default shell:
+```
+chsh /usr/bin/fish
 ```
 
 Install plugins using the fisher plugin manager, included in this repo as a submodule:
@@ -251,7 +257,7 @@ Install vim plugins with minpac by opening a vim editor and execute these comman
 Neovim
 ======
 
-Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), making sure it is executable, and placing it in your working directory `$DWD`.
+Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), make sure it is executable (`chmod u+x`), and place it in your home `$HOME`.
 
 Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
 ```
