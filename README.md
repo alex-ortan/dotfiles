@@ -297,6 +297,8 @@ If you use python, this is what you need to do to install the [pylsp](https://gi
 have python 3.7+ installed on your system.
 
 ```bash
+python3 -m venv .venv
+source ./venv/bin/activate.fish
 pip install "python-lsp-server[all]"
 pip install python-lsp-ruff
 ```
