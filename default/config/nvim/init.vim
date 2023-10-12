@@ -16,6 +16,11 @@ set softtabstop=4   " how far cursor moves while typing Tab
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
 
+" Fold using indentation
+au FileType python set foldmethod=indent foldnestmax=1 foldminlines=10
+" Open/close folds with space
+au FileType python nnoremap <space> za
+
 " Explicitly set the amount of indentation added automatically in python
 " - lines after a parenthesis is open are indented only one more than
 "   the parenthesis line (default is to add two indentations)
