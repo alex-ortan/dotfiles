@@ -108,6 +108,9 @@ hi VimwikiHeader6 ctermfg=Brown
 " Language Server Protocol
 " ========================
 
+" Specify Python 3 to use
+let g:python3_host_prog = '/home/alex/.venv/bin/python3'
+
 lua << EOF
 
 -- TODO: use ruff-lsp instead of python-lsp-ruff

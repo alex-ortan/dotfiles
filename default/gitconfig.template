@@ -9,7 +9,7 @@
 [credential]
     helper = store
 
-[url $GITHUB_SHORT_URL]
+[url "$GITHUB_SHORT_URL"]
 	insteadof = $GITHUB_URL
 
 [http "https://github.com"]

@@ -1,6 +1,7 @@
 Contents
 ========
 
+- [Prerequisites](#Prerequisites)
 - [Install dotfiles from this repo](#Install dotfiles from this repo)
     - [Adding a submodule](#Install dotfiles from this repo#Adding a submodule)
 - [GitHub](#GitHub)
@@ -16,13 +17,28 @@ Contents
 - [Vim](#Vim)
 
 
+Prerequisites
+=============
+
+Make sure you have the following programs installed, otherwise install them:
+```
+sudo apt install curl 
+sudo apt install git
+sudo apt install tmux
+sudo apt-get -y install libfuse2    # required for neovim
+```
+
+Optionally, you can also install the [fish](#Fish) shell.
+
+
+
 Install dotfiles from this repo
 ===============================
 
 
 Clone this repo with all of its submodules:
 ```
-git clone --recurse-submodules --remote-submodules --jobs 8 git@github.com:alex-ortan/dotfiles.git
+git clone --recurse-submodules --remote-submodules --jobs 8 https://github.com/alex-ortan/dotfiles.git
 cd dotfiles
 ```
 
@@ -39,7 +55,7 @@ DWD="/home/alex/MyFavoriteDirectory"
 HTTP_PROXY=""
 NO_PROXY=""
 GITHUB_NAME="alex-ortan"
-GITHUB_EMAIL="aortan@umn.edu"
+GITHUB_EMAIL="email@[domain].com"
 GITHUB_SHORT_URL="https://github.com"
 GITHUB_URL='"https://github.com"'
 GITHUB_PROXY=""
@@ -55,7 +71,16 @@ If using fish, run:
 ```fish
 eval (cat .secrets) bashdot/bashdot install default
 ```
-This command is idempotent - meaning in particular that you can rerun it without side effects.
+This command is idempotent - meaning that you can rerun it without side effects.
+
+For some reason the variable completion for the `.gitconfig` file is missing some quotation marks. You'l need to manually go in and change this line
+```
+[url https://github.com]
+```
+to
+```
+[url "https://github.com"]
+```
 
 
 ## Adding a submodule
@@ -165,11 +190,11 @@ Install the latest version of fish by first adding the fish-shell ppa:
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
 sudo apt install fish
-fish
 ```
 
 Configure fish by running the `fish_config` and following the instructions:
 ```
+fish
 fish_config prompt choose arrow
 ```
 
@@ -272,6 +297,8 @@ If you use python, this is what you need to do to install the [pylsp](https://gi
 have python 3.7+ installed on your system.
 
 ```bash
+python3 -m venv .venv
+source ./venv/bin/activate.fish
 pip install "python-lsp-server[all]"
 pip install python-lsp-ruff
 ```
