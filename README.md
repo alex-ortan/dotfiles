@@ -2,19 +2,12 @@ Contents
 ========
 
 - [Prerequisites](#Prerequisites)
-- [Install dotfiles from this repo](#Install dotfiles from this repo)
-    - [Adding a submodule](#Install dotfiles from this repo#Adding a submodule)
+- [Install dotfiles from this repo](#install-dotfiles-from-this-repo)
 - [GitHub](#GitHub)
-    - [Ssh](#GitHub#Ssh)
-    - [HTTPS](#GitHub#HTTPS)
-- [AWS access](#AWS access)
+- [AWS access](#aws-access)
 - [WSL](#WSL)
 - [Fish](#Fish)
-    - [Troubleshooting](#Fish#Troubleshooting)
-- [ZSH](#ZSH)
-    - [zgen](#ZSH#zgen)
-    - [slimzsh](#ZSH#slimzsh)
-- [Vim](#Vim)
+- [Neovim](#noevim)
 
 
 Prerequisites
@@ -28,13 +21,17 @@ sudo apt install tmux
 sudo apt-get -y install libfuse2    # required for neovim
 ```
 
-Optionally, you can also install the [fish](#Fish) shell.
-
+The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate.fish
+pip install ruff
+pip install ruff-lsp
+```
 
 
 Install dotfiles from this repo
 ===============================
-
 
 Clone this repo with all of its submodules:
 ```
@@ -83,7 +80,8 @@ to
 ```
 
 
-## Adding a submodule
+Adding a submodule
+------------------
 
 To add a new submodule:
 ```
@@ -117,7 +115,8 @@ In some cases, say if you commit to both a work and personal github account, you
 ```
 
 
-## Ssh
+Ssh
+---
 
 To make your github development life easier, you'll want to [set up and use a pair of ssh keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh). This way you won't have to type your password every time.
 
@@ -134,7 +133,8 @@ To make your github development life easier, you'll want to [set up and use a pa
 4. Then, add the public key to github: copy the contents of the `id_rsa.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
 
 
-## HTTPS
+HTTPS
+-----
 
 If you cannot use ssh for some reason, you'll have to use the https protocol. If you use https, you can authenticate via a personal access token (PAT). [Create a PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for every device you clone repos on.
 
@@ -211,7 +211,8 @@ fisher install acomagu/fish-async-prompt
 ```
 
 
-## Troubleshooting
+Troubleshooting
+---------------
 
 1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
     This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `python3` version:
@@ -230,7 +231,19 @@ fisher install acomagu/fish-async-prompt
    ```
 
 
+Neovim
+======
 
+Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), make sure it is executable (`chmod u+x`), and place it in your home `$HOME`.
+
+Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
+```
+:PackUpdate
+:PackStatus
+```
+
+
+<!--
 ZSH
 ===
 
@@ -269,7 +282,6 @@ git submodule set-branch --branch main pure
 ```
 
 
-
 Vim
 ===
 
@@ -278,27 +290,4 @@ Install vim plugins with minpac by opening a vim editor and execute these comman
 :PackUpdate
 :PackStatus
 ```
-
-Neovim
-======
-
-Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), make sure it is executable (`chmod u+x`), and place it in your home `$HOME`.
-
-Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
-```
-:PackUpdate
-:PackStatus
-```
-
-Python
-======
-
-If you use python, this is what you need to do to install the [pylsp](https://github.com/python-lsp/python-lsp-server) Language Server for it. This assumes you already 
-have python 3.7+ installed on your system.
-
-```bash
-python3 -m venv .venv
-source ./venv/bin/activate.fish
-pip install "python-lsp-server[all]"
-pip install python-lsp-ruff
-```
+-->
