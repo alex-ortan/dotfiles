@@ -7,7 +7,7 @@ Contents
 - [AWS access](#aws-access)
 - [WSL](#WSL)
 - [Fish](#Fish)
-- [Neovim](#noevim)
+- [Neovim](#neovim)
 
 
 Prerequisites
@@ -23,6 +23,7 @@ sudo apt-get -y install libfuse2    # required for neovim
 
 The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those:
 ```bash
+cd /home/alex/ 
 python3 -m venv .venv
 source .venv/bin/activate.fish
 pip install ruff

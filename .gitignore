@@ -1,6 +1,7 @@
 *.rendered
 *.secrets
 *netrwhist
+default/config/configstore/
 default/config/fish/
 default/config/gh/
 default/config/htop/
