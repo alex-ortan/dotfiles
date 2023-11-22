@@ -112,7 +112,7 @@ In some cases, say if you commit to both a work and personal github account, you
 ```
 [user]
     name = alex-ortan
-    email = aortan@umn.edu
+    email = 13038064+alex-ortan@users.noreply.github.com
 ```
 
 
