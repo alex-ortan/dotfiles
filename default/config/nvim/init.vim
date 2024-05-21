@@ -94,6 +94,8 @@ let g:vimwiki_list = [{'path': "$DWD/wiki"}]
 " If you don't want markdown files to be handled by vimwiki:
 let g:vimwiki_ext2syntax = {'.wiki': 'media'}
 
+" Fold sections and code blocks
+let g:vimwiki_folding = 'expr'
 
 " Manually set colors for each heading level; default is all the same color
 hi VimwikiHeader1 ctermfg=Green
