@@ -48,21 +48,21 @@ c = get_config()  #noqa
 #  .. code-block:: python
 #  
 #     c.Application.logging_config = {
-#         'handlers': {
-#             'file': {
-#                 'class': 'logging.FileHandler',
-#                 'level': 'DEBUG',
-#                 'filename': '<path/to/file>',
+#         "handlers": {
+#             "file": {
+#                 "class": "logging.FileHandler",
+#                 "level": "DEBUG",
+#                 "filename": "<path/to/file>",
 #             }
 #         },
-#         'loggers': {
-#             '<application-name>': {
-#                 'level': 'DEBUG',
+#         "loggers": {
+#             "<application-name>": {
+#                 "level": "DEBUG",
 #                 # NOTE: if you don't list the default "console"
 #                 # handler here then it will be disabled
-#                 'handlers': ['console', 'file'],
+#                 "handlers": ["console", "file"],
 #             },
-#         }
+#         },
 #     }
 #  Default: {}
 # c.Application.logging_config = {}
@@ -474,6 +474,11 @@ c = get_config()  #noqa
 #  Default: False
 # c.LabApp.core_mode = False
 
+## Whether custom CSS is loaded on the page.
+#      Defaults to False.
+#  Default: False
+# c.LabApp.custom_css = False
+
 ## The default URL to redirect to from `/`
 #  Default: '/lab'
 # c.LabApp.default_url = '/lab'
@@ -539,6 +544,10 @@ c = get_config()  #noqa
 ## The listings url.
 #  Default: ''
 # c.LabApp.listings_url = ''
+
+## Whether all plugins are locked (cannot be enabled/disabled from the UI)
+#  Default: False
+# c.LabApp.lock_all_plugins = False
 
 ## The date format used by logging formatters for %(asctime)s
 #  See also: Application.log_datefmt
@@ -673,6 +682,11 @@ c = get_config()  #noqa
 #  Default: False
 # c.ServerApp.allow_credentials = False
 
+## Whether or not to allow external kernels, whose connection files are placed in
+#  external_connection_dir.
+#  Default: False
+# c.ServerApp.allow_external_kernels = False
+
 ## Set the Access-Control-Allow-Origin header
 #  
 #          Use '*' to allow any origin to access your server.
@@ -716,6 +730,22 @@ c = get_config()  #noqa
 #  Default: False
 # c.ServerApp.allow_root = False
 
+## Allow unauthenticated access to endpoints without authentication rule.
+#  
+#          When set to `True` (default in jupyter-server 2.0, subject to change
+#          in the future), any request to an endpoint without an authentication rule
+#          (either `@tornado.web.authenticated`, or `@allow_unauthenticated`)
+#          will be permitted, regardless of whether user has logged in or not.
+#  
+#          When set to `False`, logging in will be required for access to each endpoint,
+#          excluding the endpoints marked with `@allow_unauthenticated` decorator.
+#  
+#          This option can be configured using `JUPYTER_SERVER_ALLOW_UNAUTHENTICATED_ACCESS`
+#          environment variable: any non-empty value other than "true" and "yes" will
+#          prevent unauthenticated access to endpoints without `@allow_unauthenticated`.
+#  Default: True
+# c.ServerApp.allow_unauthenticated_access = True
+
 ## Answer yes to any prompts.
 #  See also: JupyterApp.answer_yes
 # c.ServerApp.answer_yes = False
@@ -746,7 +776,7 @@ c = get_config()  #noqa
 #                        standard library module, which allows setting of the
 #                        BROWSER environment variable to override it.
 #  Default: ''
-c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe %s'
+# c.ServerApp.browser = ''
 
 ## The full path to an SSL/TLS certificate file.
 #  Default: ''
@@ -821,6 +851,14 @@ c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.ex
 #          with the full knowledge of what that implies.
 #  Default: False
 # c.ServerApp.disable_check_xsrf = False
+
+## The directory to look at for external kernel connection files, if
+#  allow_external_kernels is True. Defaults to Jupyter
+#  runtime_dir/external_kernels. Make sure that this directory is not filled with
+#  left-over connection files, that could result in unnecessary kernel manager
+#  creations.
+#  Default: None
+# c.ServerApp.external_connection_dir = None
 
 ## handlers that should be loaded at higher priority than the default services
 #  Default: []
@@ -993,6 +1031,8 @@ c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.ex
 # c.ServerApp.port_retries = 50
 
 ## Preferred starting directory to use for notebooks and kernels.
+#  ServerApp.preferred_dir is deprecated in jupyter-server 2.0. Use
+#  FileContentsManager.preferred_dir instead
 #  Default: ''
 # c.ServerApp.preferred_dir = ''
 
@@ -1098,7 +1138,7 @@ c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.ex
 #       Disabling this setting to False will disable this behavior, allowing the browser
 #       to launch by using a URL and visible token (as before).
 #  Default: True
-c.ServerApp.use_redirect_file = False
+# c.ServerApp.use_redirect_file = True
 
 ## Specify where to open the server on startup. This is the
 #          `new` argument passed to the standard library method `webbrowser.open`.
@@ -1122,6 +1162,26 @@ c.ServerApp.use_redirect_file = False
 #  See the tornado docs for WebSocketHandler.get_compression_options for details.
 #  Default: None
 # c.ServerApp.websocket_compression_options = None
+
+## Configure the websocket ping interval in seconds.
+#  
+#  Websockets are long-lived connections that are used by some Jupyter Server
+#  extensions.
+#  
+#  Periodic pings help to detect disconnected clients and keep the connection
+#  active. If this is set to None, then no pings will be performed.
+#  
+#  When a ping is sent, the client has ``websocket_ping_timeout`` seconds to
+#  respond. If no response is received within this period, the connection will be
+#  closed from the server side.
+#  Default: 0
+# c.ServerApp.websocket_ping_interval = 0
+
+## Configure the websocket ping timeout in seconds.
+#  
+#  See ``websocket_ping_interval`` for details.
+#  Default: 0
+# c.ServerApp.websocket_ping_timeout = 0
 
 ## The base URL for websockets,
 #          if it differs from the HTTP server (hint: it almost certainly doesn't).
