@@ -10,4 +10,5 @@ default/config/wslu
 default/config/nvim/pack/minpac/start/
 default/jupyter/migrated
 default/jupyter/lab
+default/jupyter/serverconfig/
 default/vim/pack/minpac/start/
