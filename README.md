@@ -40,6 +40,7 @@ Clone this repo with all of its submodules:
 git clone --recurse-submodules --remote-submodules --jobs 8 https://github.com/alex-ortan/dotfiles.git
 cd dotfiles
 ```
+(you may need to disconnect from VPN to do this.)
 
 Update the submodules to their latest version:
 ```
@@ -72,7 +73,7 @@ eval (cat .secrets) bashdot/bashdot install default
 ```
 This command is idempotent - meaning that you can rerun it without side effects.
 
-For some reason the variable completion for the `.gitconfig` file is missing some quotation marks. You'l need to manually go in and change this line
+For some reason the variable completion for the `.gitconfig` file is missing some quotation marks. You'll need to manually go in and change this line
 ```
 [url https://github.com]
 ```
