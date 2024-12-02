@@ -21,6 +21,9 @@ au FileType python set foldmethod=indent foldnestmax=1 foldminlines=10
 " Open/close folds with space
 au FileType python nnoremap <space> za
 
+" Format json file with ctrl+m shortcut key
+nnoremap <F2> :%!jq .<CR>
+
 " Explicitly set the amount of indentation added automatically in python
 " - lines after a parenthesis is open are indented only one more than
 "   the parenthesis line (default is to add two indentations)
@@ -58,7 +61,7 @@ function! PackInit() abort
   call minpac#add('vimwiki/vimwiki')
   call minpac#add('dracula/vim', { 'name': 'dracula'})
 
-  " Some configurations for the pylsp language server
+  " Some configurations for the lsp language server
   call minpac#add('neovim/nvim-lspconfig')
 
 endfunction
@@ -114,6 +117,12 @@ hi VimwikiHeader6 ctermfg=Brown
 " ========================
 
 " Specify Python 3 to use
+" on personal computer:
 " let g:python3_host_prog = '/home/alex/.venv/bin/python3'
+" on work computer:
+let g:python3_host_prog = '/usr/bin/python3'
+" TODO: make it consistent across computers
+
+"set omnifunc=syntaxcomplete#Complete
 
 lua require("init")

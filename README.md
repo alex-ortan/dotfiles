@@ -28,6 +28,7 @@ python3 -m venv .venv
 source .venv/bin/activate.fish
 pip install ruff
 pip install ruff-lsp
+pip install neovim pynvim
 ```
 
 

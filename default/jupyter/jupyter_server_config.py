@@ -500,7 +500,12 @@ c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.ex
 
 ## Supply overrides for the tornado.web.Application that the Jupyter server uses.
 #  Default: {}
-# c.ServerApp.tornado_settings = {}
+c.ServerApp.tornado_settings = {
+    "page_config_data": {
+        "buildCheck": False,
+        "buildAvailable": False,
+    }
+}
 
 ## Whether to trust or not X-Scheme/X-Forwarded-Proto and X-Real-Ip/X-Forwarded-
 #  For headerssent by the upstream reverse proxy. Necessary if the proxy handles
