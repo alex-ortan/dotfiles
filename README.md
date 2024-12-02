@@ -73,11 +73,9 @@ eval (cat .secrets) bashdot/bashdot install default
 ```
 This command is idempotent - meaning that you can rerun it without side effects.
 
-For some reason the variable completion for the `.gitconfig` file is missing some quotation marks. You'll need to manually go in and change this line
-```
-[url https://github.com]
-```
-to
+Resolve any conflicts. If a config folder already exists on your system, bashdot will fail. Make a backup of that folder, delete it, and try again. If a dotfile already exists on your system, bashdot will log that it has failed to link it but will continue with the other files. Make a backup of the skipped dotfile, delete it, and try again.
+
+Sometimes the variable completion for the `.gitconfig` file messes up some quotation marks. You'll need to manually go in and check the url lines have a single set of quotation marks around each url, ike this:
 ```
 [url "https://github.com"]
 ```
