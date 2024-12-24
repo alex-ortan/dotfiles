@@ -40,7 +40,7 @@ Clone this repo with all of its submodules:
 git clone --recurse-submodules --remote-submodules --jobs 8 https://github.com/alex-ortan/dotfiles.git
 cd dotfiles
 ```
-(you may need to disconnect from VPN to do this.)
+You may need to disconnect from VPN to use git until you finish configuring `.gitconfig` in the next couple of steps.
 
 Update the submodules to their latest version:
 ```
