@@ -18,12 +18,13 @@ Make sure you have the following programs installed, otherwise install them:
 sudo apt install curl 
 sudo apt install git
 sudo apt install tmux
-sudo apt-get -y install libfuse2    # required for neovim
+sudo apt-get -y install libfuse2                    # required for neovim
+curl -LsSf https://astral.sh/uv/install.sh | sh     # fast python package manager
 ```
 
 The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those:
 ```bash
-cd /home/alex/ 
+cd ~ 
 python3 -m venv .venv
 source .venv/bin/activate.fish
 pip install ruff
@@ -175,9 +176,28 @@ For everything to look pretty, install the [Dracula theme for Windows Terminal](
 cp default/windows_terminal_settings.json /mnt/c/Users/$USERNAME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
 ```
 
-Enable permissions to be set from Linux.
+Enable permissions to be set from Linux: add this blcok to `/etc/wsl.conf`:
 ```
-sudo cp default/wsl.conf /etc/
+[automount]
+options = "metadata"
+```
+
+
+Neovim
+======
+
+Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), make it executable, and place it in your home `$HOME`:
+```
+cd ~
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+```
+
+Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
+```
+:PackUpdate
+:PackStatus
 ```
 
 
@@ -185,23 +205,22 @@ sudo cp default/wsl.conf /etc/
 Fish
 ====
 
-
 Install the latest version of fish by first adding the fish-shell ppa:
 ```
-sudo apt-add-repository ppa:fish-shell/release-3
-sudo apt update
+sudo apt-add-repository ppa:fish-shell/release-3    # VPN off
+sudo apt update                                     # VPN on
 sudo apt install fish
 ```
 
 Configure fish by running the `fish_config` and following the instructions:
 ```
 fish
-fish_config prompt choose arrow
+fish_config prompt choose disco
 ```
 
 Make it the default shell:
 ```
-chsh /usr/bin/fish
+chsh -s /usr/bin/fish $USER
 ```
 
 Install plugins using the fisher plugin manager, included in this repo as a submodule:
@@ -230,18 +249,6 @@ Troubleshooting
    ```
    fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
    ```
-
-
-Neovim
-======
-
-Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim.appimage), make sure it is executable (`chmod u+x`), and place it in your home `$HOME`.
-
-Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
-```
-:PackUpdate
-:PackStatus
-```
 
 
 <!--
