@@ -15,20 +15,25 @@ Prerequisites
 
 Make sure you have the following programs installed, otherwise install them:
 ```
+sudo apt update
 sudo apt install curl 
 sudo apt install git
 sudo apt install tmux
+
 sudo apt-get -y install libfuse2                    # required for neovim
 curl -LsSf https://astral.sh/uv/install.sh | sh     # fast python package manager
 ```
 
-The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those:
+The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those. First up, install ruff globally:
+```bash
+pipx install ruff ruff-lsp
+```
+
+Then create a virtual environment that neovim will use and that has the neovim and pynvim packages:
 ```bash
 cd ~ 
 python3 -m venv .venv
 source .venv/bin/activate.fish
-pip install ruff
-pip install ruff-lsp
 pip install neovim pynvim
 ```
 

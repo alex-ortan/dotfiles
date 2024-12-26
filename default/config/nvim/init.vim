@@ -119,8 +119,10 @@ hi VimwikiHeader6 ctermfg=Brown
 " Specify Python 3 to use
 " on personal computer:
 " let g:python3_host_prog = '/home/alex/.venv/bin/python3'
+" on work computer Ubuntu 20.04:
+" let g:python3_host_prog = '/usr/bin/python3'
 " on work computer:
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/home/aortan/.venv/bin/python3'
 " TODO: make it consistent across computers
 
 "set omnifunc=syntaxcomplete#Complete
