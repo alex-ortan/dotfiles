@@ -1,11 +1,13 @@
 *.rendered
 *.secrets
 *netrwhist
+*:Zone.Identifier
 default/config/configstore/
 default/config/fish/
 default/config/gh/
 default/config/htop/
 default/config/pip/
+default/config/uv/
 default/config/wslu
 default/config/nvim/pack/minpac/start/
 default/jupyter/migrated
