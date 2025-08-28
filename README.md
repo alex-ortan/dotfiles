@@ -136,9 +136,9 @@ To make your github development life easier, you'll want to [set up and use a pa
 3. Once you have ssh keys, add the private key to the ssh agent:
    ```
    eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_rsa
+   ssh-add ~/.ssh/id_ed25519
    ```
-4. Then, add the public key to github: copy the contents of the `id_rsa.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
+4. Then, add the public key to github: copy the contents of the `id_ed25519.pub` file, then in github go to `Settings` > `SSH and GPG keys` > `New SSH key` and paste in the key.
 
 
 HTTPS
