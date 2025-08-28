@@ -8,6 +8,7 @@ Contents
 - [WSL](#WSL)
 - [Fish](#Fish)
 - [Neovim](#neovim)
+- [Other Configs](#other-configs)
 
 
 Prerequisites
@@ -254,6 +255,42 @@ Troubleshooting
    ```
    fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
    ```
+
+
+Other Configs
+=============
+
+Gnome Terminal
+--------------
+
+If for some unhinged reason you want your terminal to start in a working directory other than `/home/$USER`,
+you should resist the urge to just slap a `cd /my/custom/dir` in `.bashrc` or `fish.config`.
+This causes unnecessary issues with the fish/tmux combo in WSL, and would require too much custom code in dotfiles.
+
+Instead, you can take these steps in Ubuntu:
+
+1. Edit the Exec= line of the gnome-terminal launcher to set a custom working directory for the terminal shortcut icons
+on the Desktop and the Dash.
+
+    1.1 Copy the global org.gnome.Terminal.desktop file to ~/.local/share/applications and edit the local copy:
+    ```
+    cp /usr/share/applications/org.gnome.Terminal.desktop ~/.local/share/applications
+    vi ~/.local/share/applications/org.gnome.Terminal.desktop
+    ```
+
+    1.2 Look up the first occurrence of the Exec= line, change it into:
+    ```
+    Exec=gnome-terminal --working-directory=/full/path/to/your/directory
+    ```
+
+    1/3 Either Log out and back in, or run source ~/.profile.
+
+2. Change the functionality of `Ctrl`+`Alt`+`T`.
+
+    2.1 Navigate to Settings > "Keyboard" > "View and Customize Shortcuts" > "Launchers"
+    2.2 Find the "Launch Terminal" shortcut and disable it
+    2.4 Navigate to Settings > "Keyboard" > "View and Customize Shortcuts" > "Custom Shortcuts"
+    2.4 Add the command `gnome-terminal --working-directory=/full/path/to/your/directory` to `Ctrl`+`Alt`+`T`.
 
 
 <!--
