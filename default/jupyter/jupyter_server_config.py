@@ -155,7 +155,8 @@
 #                        BROWSER environment variable to override it.
 #  Default: ''
 # c.ServerApp.browser = ''
-c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe %s'
+c.ServerApp.browser = '/snap/bin/chromium'
+# c.ServerApp.browser = '/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe %s'
 
 ## The full path to an SSL/TLS certificate file.
 #  Default: ''
