@@ -80,4 +80,4 @@ compinit
 # End of lines added by compinstall
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/alex/.local/bin/mc mc
+complete -o nospace -C "$HOME/.local/bin/mc" mc

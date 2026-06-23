@@ -181,4 +181,4 @@ if ! shopt -oq posix; then
 fi
 
 # Add completion functionality for the minio client (mc)
-complete -C /home/alex/.local/bin/mc mc
+complete -C "$HOME/.local/bin/mc" mc
