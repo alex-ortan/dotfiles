@@ -127,4 +127,4 @@ let g:python3_host_prog = '/home/aortan/.venv/bin/python3'
 
 "set omnifunc=syntaxcomplete#Complete
 
-lua require("init")
+" lua require("init")
