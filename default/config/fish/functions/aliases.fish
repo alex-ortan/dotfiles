@@ -1,6 +1,6 @@
 # Remap vi command to neovim
 function vi
-    $HOME/nvim.appimage $argv
+    $HOME/nvim-linux-x86_64.appimage $argv
 end
 
 # Source local virtual environment
