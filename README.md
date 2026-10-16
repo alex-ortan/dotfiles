@@ -14,29 +14,28 @@ Contents
 Prerequisites
 =============
 
-Make sure you have the following programs installed, otherwise install them:
+Make sure you have `git` installed, otherwise install it:
 ```
 sudo apt update
-sudo apt install curl 
 sudo apt install git
-sudo apt install tmux
+wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manager
 
-sudo apt-get -y install libfuse2                    # required for neovim
-curl -LsSf https://astral.sh/uv/install.sh | sh     # fast python package manager
+#sudo apt install tmux
+#sudo apt-get -y install libfuse2                    # required for neovim
 ```
 
-The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those. First up, install ruff globally:
-```bash
-pipx install ruff ruff-lsp
-```
+#The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those. First up, install ruff globally:
+#```bash
+#pipx install ruff ruff-lsp
+#```
 
-Then create a virtual environment that neovim will use and that has the neovim and pynvim packages:
-```bash
-cd ~ 
-python3 -m venv .venv
-source .venv/bin/activate.fish
-pip install neovim pynvim
-```
+#Then create a virtual environment that neovim will use and that has the neovim and pynvim packages:
+#```bash
+#cd ~ 
+#python3 -m venv .venv
+#source .venv/bin/activate.fish
+#pip install neovim pynvim
+#```
 
 
 Install dotfiles from this repo
@@ -70,17 +69,20 @@ ROOT_CA=""
 etc
 ```
 
-Install dotfiles with bashdot. If using bash, run:
-```bash
-env $(cat .secrets | xargs) bashdot/bashdot install default
+Install dotfiles with dotpy. If using bash, run:
+```
+env $(cat .secrets | xargs) uvx --python 3.10 --from dot-py dot.py link default
+env $(cat .secrets | xargs) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
+
 ```
 If using fish, run:
 ```fish
-eval (cat .secrets) bashdot/bashdot install default
+eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
+eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
 ```
 This command is idempotent - meaning that you can rerun it without side effects.
 
-Resolve any conflicts. If a config folder already exists on your system, bashdot will fail. Make a backup of that folder, delete it, and try again. If a dotfile already exists on your system, bashdot will log that it has failed to link it but will continue with the other files. Make a backup of the skipped dotfile, delete it, and try again.
+Resolve any conflicts. If a dotfile or a config folder already exists on your system, dotpy will fail. Make a backup of that file or folder, delete it, and try again.
 
 Sometimes the variable completion for the `.gitconfig` file messes up some quotation marks. You'll need to manually go in and check the url lines have a single set of quotation marks around each url, ike this:
 ```
