@@ -9,5 +9,8 @@
 	url = https://github.com/jorgebucaran/fisher
 	branch = main
 [submodule "default/config/nvim/pack/minpac/opt/minpac"]
-	path = default/config/nvim/pack/minpac/opt/minpac
+	path = config/nvim/pack/minpac/opt/minpac
 	url = https://github.com/k-takata/minpac.git
+[submodule "dotpy"]
+	path = dotpy
+	url = https://github.com/vincentqb/dot.py

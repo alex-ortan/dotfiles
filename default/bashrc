@@ -73,24 +73,6 @@ shopt -s globstar
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
-# Prepend cd to directory names automatically
-shopt -s autocd 2> /dev/null
-# Correct spelling errors during tab-completion
-shopt -s dirspell 2> /dev/null
-# Correct spelling errors in arguments supplied to cd
-shopt -s cdspell 2> /dev/null
-
-# This allows you to bookmark your favorite places across the file system
-# Define a variable containing a path and you will be able to cd into it regardless of the directory you're in
-shopt -s cdable_vars
-
-# Examples:
-# export dotfiles="$HOME/dotfiles"
-# export projects="$HOME/projects"
-# export documents="$HOME/Documents"
-# export dropbox="$HOME/Dropbox"
-
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -182,3 +164,5 @@ fi
 
 # Add completion functionality for the minio client (mc)
 complete -C "$HOME/.local/bin/mc" mc
+
+. "$HOME/.local/bin/env"
