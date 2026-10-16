@@ -14,14 +14,17 @@ Contents
 Prerequisites
 =============
 
-Make sure you have `git` installed, otherwise install it:
+Make sure you have `git` and `uv` installed, otherwise install them:
 ```
 sudo apt update
 sudo apt install git
 wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manager
+```
+Restart your shell to make sure the `uv` is available.
 
+<!--
+```
 #sudo apt install tmux
-#sudo apt-get -y install libfuse2                    # required for neovim
 ```
 
 #The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those. First up, install ruff globally:
@@ -36,7 +39,7 @@ wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manage
 #source .venv/bin/activate.fish
 #pip install neovim pynvim
 #```
-
+-->
 
 Install dotfiles from this repo
 ===============================
@@ -80,11 +83,11 @@ If using fish, run:
 eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
 eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
 ```
-This command is idempotent - meaning that you can rerun it without side effects.
+These commands are idempotent - meaning that you can rerun them without side effects.
 
 Resolve any conflicts. If a dotfile or a config folder already exists on your system, dotpy will fail. Make a backup of that file or folder, delete it, and try again.
 
-Sometimes the variable completion for the `.gitconfig` file messes up some quotation marks. You'll need to manually go in and check the url lines have a single set of quotation marks around each url, ike this:
+Sometimes the variable completion for the `.gitconfig` file messes up some quotation marks. You'll need to manually go in and check the url lines have a single set of quotation marks around each url, like this:
 ```
 [url "https://github.com"]
 ```
@@ -98,7 +101,7 @@ To add a new submodule:
 git submodule add https://github.com/jorgebucaran/fisher fisher
 ```
 
-If you add a submodule inside one of the profiles (e.g. default) and want that to show up as a dotfile, don't forget to rerun the `bashdot install` command above. 
+If you add a submodule inside one of the profiles (e.g. default) and want that to show up as a dotfile, don't forget to rerun the `dot.py link` command above. 
 
 By default, submodules will pull from the master branch of a repository. If you want to change that, you can do:
 ```
@@ -184,7 +187,7 @@ For everything to look pretty, install the [Dracula theme for Windows Terminal](
 cp default/windows_terminal_settings.json /mnt/c/Users/$USERNAME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
 ```
 
-Enable permissions to be set from Linux: add this blcok to `/etc/wsl.conf`:
+Enable permissions to be set from Linux: add this block to `/etc/wsl.conf`:
 ```
 [automount]
 options = "metadata"
@@ -250,8 +253,8 @@ Troubleshooting
 2. The `apt-add-repository` command times out because of a connection issue. 
    This happens when you're behind a proxy. To make sure `apt-add-repository` uses your proxy, you have to set the `HTTP_PROXY` environment variable appropriately, and make sure tell `sudo` to preserve the environment with the -E option:
    ```
-   epxort HTTPS_PROXY=YOUR_OWN_PROXY
-   sudo -E python3.8 /usr/bin/apt-add-repositoryppa:fish-shell/release-3
+   export HTTPS_PROXY=YOUR_OWN_PROXY
+   sudo -E python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
    ```
 3. The `fish_config` command fails. If you're on WSL, might need to change to update the `fileurl` variable in `/usr/share/fish/tools/web_config/webconfig.py` to:
    ```
