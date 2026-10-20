@@ -313,13 +313,17 @@ on the Desktop and the Dash.
     2.4 Add the command `gnome-terminal --working-directory=/full/path/to/your/directory` to `Ctrl`+`Alt`+`T`.
 
 
-<!--
 Vim
-===
+---
 
-Install vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
+If you want to use vim instead of neovim, install the full version:
+```
+sudo apt install vim
+```
+Ubuntu comes with `vim.tiny` pre-installed these days, but that doesn't handle most of the customizations in my `.vimrc`.
+
+Install the vim plugins with minpac by opening a vim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `vimrc` file.
 ```
 :PackUpdate
 :PackStatus
 ```
--->
