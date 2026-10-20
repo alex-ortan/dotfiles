@@ -166,9 +166,9 @@ To avoid typing the username and PAT every time you need to authenticate, use gi
 Fish
 ====
 
-Install the latest version of fish by first adding the fish-shell ppa:
+If fish is not already installed, install the latest version from the fish-shell ppa:
 ```
-sudo apt-add-repository ppa:fish-shell/release-3    # VPN off
+sudo apt-add-repository ppa:fish-shell/release-4    # VPN off
 sudo apt update                                     # VPN on
 sudo apt install fish
 ```
@@ -183,9 +183,14 @@ fish_config prompt choose disco
 Install plugins using the fisher plugin manager, included in this repo as a submodule:
 ```
 source fisher/functions/fisher.fish
+```
+<!--
+Run these lines if necessary. They should be redundant since .config/fish/fish_plugins file should already contain them.
+```
 fisher install fisher/
 fisher install acomagu/fish-async-prompt
 ```
+-->
 
 
 Troubleshooting
@@ -194,17 +199,17 @@ Troubleshooting
 1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
     This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `python3` version:
     ```
-    sudo python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
+    sudo python3.14 /usr/bin/apt-add-repository ppa:fish-shell/release-4
     ```
 2. The `apt-add-repository` command times out because of a connection issue. 
    This happens when you're behind a proxy. To make sure `apt-add-repository` uses your proxy, you have to set the `HTTP_PROXY` environment variable appropriately, and make sure tell `sudo` to preserve the environment with the -E option:
    ```
    export HTTPS_PROXY=YOUR_OWN_PROXY
-   sudo -E python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
+   sudo -E python3.14 /usr/bin/apt-add-repository ppa:fish-shell/release-4
    ```
 3. The `fish_config` command fails. If you're on WSL, might need to change to update the `fileurl` variable in `/usr/share/fish/tools/web_config/webconfig.py` to:
    ```
-   fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
+   fileurl = "file://wsl%24/Ubuntu-26.04" + f.name
    ```
 
 
@@ -212,7 +217,7 @@ Troubleshooting
 Neovim
 ======
 
-Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), make it executable, and place it in your home `$HOME`:
+If not already installed, install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), make it executable, and place it in your home `$HOME`:
 ```
 cd ~
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
@@ -220,7 +225,7 @@ chmod u+x nvim-linux-x86_64.appimage
 ./nvim-linux-x86_64.appimage
 ```
 
-If the AppImage fails with a FUSE error, install `libfuse2`, or `libfuse2t64` on newer Ubuntu.
+If the AppImage fails with a FUSE error, install `libfuse2`, or `libfuse2t64` on newer Ubuntu, or `fuse3`.
 
 Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
 ```
@@ -305,44 +310,6 @@ on the Desktop and the Dash.
 
 
 <!--
-ZSH
-===
-
-You might need to set stricter permissions for zsh to work properly:
-```
-compaudit | xargs chmod go-w 
-```
-
-(deprecated?) Manually add dracula theme from dracula-zsh submodule to zsh:
-```
-cp dracula-zsh/dracula.zsh-theme default/zgen/robbyrussell/oh-my-zsh-master/themes
-cp -r dracula-zsh/lib default/zgen/robbyrussell/oh-my-zsh-master/themes
-```
-
-Zsh might require additional fonts to work in WSL:
-```
-sudo apt-get install fonts-powerline
-sudo apt-get install powerline
-```
-
-
-## zgen
-
-Run this every time you add or remove zgen plugins:
-```
-zgen reset
-```
-
-
-## slimzsh
-
-The slimzsh submodule is relying on a deprecated branch (master) of the pure repo, so that needs to be switched to an existing branch (main):c
-```
-cd default/slimzsh
-git submodule set-branch --branch main pure
-```
-
-
 Vim
 ===
 
