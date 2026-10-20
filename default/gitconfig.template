@@ -23,10 +23,6 @@
 [core]
 	autocrlf = input
 
-[merge]
-    # Use vimdiff for merge conflicts
-	tool = vimdiff
-
 [mergetool]
 	prompt = true
 
