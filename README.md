@@ -217,15 +217,19 @@ Troubleshooting
 Neovim
 ======
 
-If not already installed, install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), make it executable, and place it in your home `$HOME`:
+If not already installed, install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), placing it in your home `$HOME` and making it executable:
 ```
 cd ~
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
 chmod u+x nvim-linux-x86_64.appimage
-./nvim-linux-x86_64.appimage
+```
+Give it a real command name to be able to use it globally:
+```
+ln -s ~/nvim-linux-x86_64.appimage ~/.local/bin/nvim
+command -v nvim
 ```
 
-If the AppImage fails with a FUSE error, install `libfuse2`, or `libfuse2t64` on newer Ubuntu, or `fuse3`.
+Try to launch `nvim`. If it fails with a FUSE error, install `libfuse2`, or `libfuse2t64` on newer Ubuntu, or `fuse3`.
 
 Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
 ```

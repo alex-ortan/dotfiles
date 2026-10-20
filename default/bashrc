@@ -8,6 +8,14 @@ case $- in
       *) return;;
 esac
 
+# Prefer neovim, then vim, then vi
+for editor in nvim vim vi; do
+    if command -v "$editor" >/dev/null; then
+        export EDITOR="$editor" VISUAL="$editor"
+        break
+    fi
+done
+
 # If not already in a tmux session and tmux exists, start or attach to one
 # -A attach if a session exists
 # -D detach other clients
@@ -16,9 +24,6 @@ esac
 if [ -z "$TMUX" ] && command -v tmux >/dev/null; then
     exec tmux new-session -A -D -s main -c "${DWD:-$HOME}"
 fi
-
-export EDITOR=vim
-export VISUAL=vim
 
 
 #####################

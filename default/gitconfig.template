@@ -21,8 +21,6 @@
 	eol = lf
 
 [core]
-    # Use vim as git commit editor
-	editor = vim
 	autocrlf = input
 
 [merge]
