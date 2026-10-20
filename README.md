@@ -93,7 +93,7 @@ These commands are idempotent - meaning that you can rerun them without side eff
 
 Resolve any conflicts. If a dotfile or a config folder already exists on your system, dotpy will fail. Make a backup of that file or folder, delete it, and try again.
 
-Sometimes the variable completion for the `.gitconfig` file messes up some quotation marks. You'll need to manually go in and check the url lines have a single set of quotation marks around each url, like this:
+Check that the url's in `~/.gitconfig` are crrect, i.e. have a single set of quotes, like this:
 ```
 [url "https://github.com"]
 ```
@@ -219,6 +219,8 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x8
 chmod u+x nvim-linux-x86_64.appimage
 ./nvim-linux-x86_64.appimage
 ```
+
+If the AppImage fails with a FUSE error, install `libfuse2`, or `libfuse2t64` on newer Ubuntu.
 
 Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
 ```
