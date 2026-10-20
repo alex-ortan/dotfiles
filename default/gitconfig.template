@@ -26,6 +26,9 @@
 [mergetool]
 	prompt = true
 
+[difftool]
+	prompt = false
+
 [alias]
     # List aliases
     la = "!git config -l | grep alias | cut -c 7-"

@@ -16,12 +16,18 @@ for editor in nvim vim vi; do
     fi
 done
 
-# Git merge tool: prefer neovim's diff mode, then vimdiff, else leave git's own default
+# Git diff/merge tool: prefer neovim's diff mode, then vimdiff, else leave git's own default
 if command -v nvim >/dev/null; then
-    export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=merge.tool GIT_CONFIG_VALUE_0=nvimdiff
+    difftool=nvimdiff
 elif command -v vimdiff >/dev/null; then
-    export GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=merge.tool GIT_CONFIG_VALUE_0=vimdiff
+    difftool=vimdiff
 fi
+if [ -n "${difftool:-}" ]; then
+    export GIT_CONFIG_COUNT=2
+    export GIT_CONFIG_KEY_0=merge.tool GIT_CONFIG_VALUE_0=$difftool
+    export GIT_CONFIG_KEY_1=diff.tool GIT_CONFIG_VALUE_1=$difftool
+fi
+unset difftool
 
 # If not already in a tmux session and tmux exists, start or attach to one
 # -A attach if a session exists
