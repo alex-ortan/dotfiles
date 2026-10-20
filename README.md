@@ -73,14 +73,14 @@ etc
 
 Install dotfiles with dotpy. If using bash, run:
 ```
-env $(cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
-env $(cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
+env $(cat .secrets) python3 dotpy/dot.py link default
+env $(cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config config
 
 ```
 If using fish, run:
 ```fish
-env (cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
-env (cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config -r config
+env (cat .secrets) python3 dotpy/dot.py link default
+env (cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
 ```
 These commands are idempotent - meaning that you can rerun them without side effects.
 
