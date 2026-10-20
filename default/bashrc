@@ -166,4 +166,4 @@ fi
 # Add completion functionality for the minio client (mc)
 complete -C "$HOME/.local/bin/mc" mc
 
-. "$HOME/.local/bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
