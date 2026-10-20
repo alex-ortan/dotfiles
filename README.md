@@ -4,25 +4,30 @@ Contents
 - [Prerequisites](#Prerequisites)
 - [Install dotfiles from this repo](#install-dotfiles-from-this-repo)
 - [GitHub](#GitHub)
-- [AWS access](#aws-access)
-- [WSL](#WSL)
 - [Fish](#Fish)
 - [Neovim](#neovim)
+- [AWS access](#aws-access)
+- [WSL](#WSL)
 - [Other Configs](#other-configs)
+
 
 
 Prerequisites
 =============
 
-Make sure you have `git` installed, otherwise install it:
+Make sure you have `git` and `python3.10+` installed, otherwise install them:
 ```
 sudo apt update
-sudo apt install git
+sudo apt install git python3.10
 ```
+For the full experience, you'll also want `tmux`:
+```
+sudo apt install tmux
+```
+
 
 <!--
 ```
-#sudo apt install tmux
 wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manager
 ```
 Restart your shell to make sure the `uv` is available.
@@ -40,6 +45,8 @@ Restart your shell to make sure the `uv` is available.
 #pip install neovim pynvim
 #```
 -->
+
+
 
 Install dotfiles from this repo
 ===============================
@@ -72,9 +79,9 @@ etc
 ```
 
 Install dotfiles with dotpy. If using bash, run:
-```
+```bash
 env $(cat .secrets) python3 dotpy/dot.py link default
-env $(cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config config
+env $(cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
 
 ```
 If using fish, run:
@@ -82,7 +89,7 @@ If using fish, run:
 env (cat .secrets) python3 dotpy/dot.py link default
 env (cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
 ```
-These commands are idempotent - meaning that you can rerun them without side effects.
+These commands are idempotent - meaning that you can rerun them without side effects. The `-r` renders `.template` files in subfolders, which `config/environment.d` needs.
 
 Resolve any conflicts. If a dotfile or a config folder already exists on your system, dotpy will fail. Make a backup of that file or folder, delete it, and try again.
 
@@ -156,6 +163,71 @@ To avoid typing the username and PAT every time you need to authenticate, use gi
 
 
 
+Fish
+====
+
+Install the latest version of fish by first adding the fish-shell ppa:
+```
+sudo apt-add-repository ppa:fish-shell/release-3    # VPN off
+sudo apt update                                     # VPN on
+sudo apt install fish
+```
+Once this is done, tmux should automatically start fish shells, so no need to set it as the default user shell.
+
+Configure fish by running the `fish_config` and following the instructions:
+```
+fish
+fish_config prompt choose disco
+```
+
+Install plugins using the fisher plugin manager, included in this repo as a submodule:
+```
+source fisher/functions/fisher.fish
+fisher install fisher/
+fisher install acomagu/fish-async-prompt
+```
+
+
+Troubleshooting
+---------------
+
+1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
+    This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `python3` version:
+    ```
+    sudo python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
+    ```
+2. The `apt-add-repository` command times out because of a connection issue. 
+   This happens when you're behind a proxy. To make sure `apt-add-repository` uses your proxy, you have to set the `HTTP_PROXY` environment variable appropriately, and make sure tell `sudo` to preserve the environment with the -E option:
+   ```
+   export HTTPS_PROXY=YOUR_OWN_PROXY
+   sudo -E python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
+   ```
+3. The `fish_config` command fails. If you're on WSL, might need to change to update the `fileurl` variable in `/usr/share/fish/tools/web_config/webconfig.py` to:
+   ```
+   fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
+   ```
+
+
+
+Neovim
+======
+
+Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), make it executable, and place it in your home `$HOME`:
+```
+cd ~
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+./nvim-linux-x86_64.appimage
+```
+
+Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
+```
+:PackUpdate
+:PackStatus
+```
+
+
+
 AWS access
 ==========
 
@@ -192,68 +264,6 @@ Enable permissions to be set from Linux: add this block to `/etc/wsl.conf`:
 options = "metadata"
 ```
 
-
-Neovim
-======
-
-Install the latest stable release by downloading [`nvim.appimage`](https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage), make it executable, and place it in your home `$HOME`:
-```
-cd ~
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
-chmod u+x nvim-linux-x86_64.appimage
-./nvim-linux-x86_64.appimage
-```
-
-Install plugins with minpac by opening a neovim editor and execute these commands to add the plugins and then check they're correctly installed. These commands are defined in the `config/nvim/init.vim` file.
-```
-:PackUpdate
-:PackStatus
-```
-
-
-
-Fish
-====
-
-Install the latest version of fish by first adding the fish-shell ppa:
-```
-sudo apt-add-repository ppa:fish-shell/release-3    # VPN off
-sudo apt update                                     # VPN on
-sudo apt install fish
-```
-
-Configure fish by running the `fish_config` and following the instructions:
-```
-fish
-fish_config prompt choose disco
-```
-
-Install plugins using the fisher plugin manager, included in this repo as a submodule:
-```
-source fisher/functions/fisher.fish
-fisher install fisher/
-fisher install acomagu/fish-async-prompt
-```
-
-
-Troubleshooting
----------------
-
-1. The `apt-add-repository` command fails with the error `ImportError: cannot import name '_gi' from partially initialized module 'gi'`.
-    This is happens because Ubuntu doesn't like your default `python3`. Likely you changed the default `python3` after installing Ubuntu, and now there are conflicts between the old and the new `python3` defaults. Try running the `apt-add-repository` explicitly using a different `python3` version:
-    ```
-    sudo python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
-    ```
-2. The `apt-add-repository` command times out because of a connection issue. 
-   This happens when you're behind a proxy. To make sure `apt-add-repository` uses your proxy, you have to set the `HTTP_PROXY` environment variable appropriately, and make sure tell `sudo` to preserve the environment with the -E option:
-   ```
-   export HTTPS_PROXY=YOUR_OWN_PROXY
-   sudo -E python3.8 /usr/bin/apt-add-repository ppa:fish-shell/release-3
-   ```
-3. The `fish_config` command fails. If you're on WSL, might need to change to update the `fileurl` variable in `/usr/share/fish/tools/web_config/webconfig.py` to:
-   ```
-   fileurl = "file://wsl%24/Ubuntu-20.04" + f.name
-   ```
 
 
 Other Configs
