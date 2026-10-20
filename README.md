@@ -55,33 +55,32 @@ Update the submodules to their latest version:
 ```
 git submodule sync
 git submodule update --init --recursive --remote --merge --jobs 8
-git pull --recurse-submodules
 ```
 
 Create a `.secrets` file where you define all the variables needed to fill in the `.template` files. Here's an example, but modify the values as needed:
 ```
-DWD="/home/alex/MyFavoriteDirectory"
-HTTP_PROXY=""
-NO_PROXY=""
-GITHUB_NAME="alex-ortan"
-GITHUB_EMAIL="13038064+alex-ortan@users.noreply.github.com"
+DWD=/home/alex/MyFavoriteDirectory
+HTTP_PROXY=
+NO_PROXY=
+GITHUB_NAME=alex-ortan
+GITHUB_EMAIL=13038064+alex-ortan@users.noreply.github.com
 GITHUB_SHORT_URL="https://github.com"
-GITHUB_URL='"https://github.com"'
-GITHUB_PROXY=""
-ROOT_CA=""
+GITHUB_URL="https://github.com"
+GITHUB_PROXY=
+ROOT_CA=
 etc
 ```
 
 Install dotfiles with dotpy. If using bash, run:
 ```
-env $(cat .secrets | xargs) uvx --python 3.10 --from dot-py dot.py link default
-env $(cat .secrets | xargs) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
+env $(cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
+env $(cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
 
 ```
 If using fish, run:
 ```fish
-eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
-eval (cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config config
+env (cat .secrets) uvx --python 3.10 --from dot-py dot.py link default
+env (cat .secrets) uvx --python 3.10 --from dot-py dot.py link --prefix "" --home ~/.config -r config
 ```
 These commands are idempotent - meaning that you can rerun them without side effects.
 
