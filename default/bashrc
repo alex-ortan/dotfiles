@@ -8,12 +8,13 @@ case $- in
       *) return;;
 esac
 
-# If not already in a tmux session, start or attach to one
-# -A flag makes new-session behave like attach-session
-# -D detaches any other clients that are attached
-# -s is for specifying the session name, 'main' in this case
-if [ ! $TMUX ]; then
-    cd $DWD; exec tmux new-session -A -D -s main
+# If not already in a tmux session and tmux exists, start or attach to one
+# -A attach if a session exists
+# -D detach other clients
+# -s session name, 'main' in this case
+# -c starting directory for a newly created session
+if [ -z "$TMUX" ] && command -v tmux >/dev/null; then
+    exec tmux new-session -A -D -s main -c "${DWD:-$HOME}"
 fi
 
 export EDITOR=vim
