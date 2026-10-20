@@ -14,18 +14,18 @@ Contents
 Prerequisites
 =============
 
-Make sure you have `git` and `uv` installed, otherwise install them:
+Make sure you have `git` installed, otherwise install it:
 ```
 sudo apt update
 sudo apt install git
-wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manager
 ```
-Restart your shell to make sure the `uv` is available.
 
 <!--
 ```
 #sudo apt install tmux
+wget -qO- https://astral.sh/uv/install.sh | sh      # fast python package manager
 ```
+Restart your shell to make sure the `uv` is available.
 
 #The configurations for lsp servers in neovim depend on python packages, so might as well go ahead and install those. First up, install ruff globally:
 #```bash
@@ -226,11 +226,6 @@ Configure fish by running the `fish_config` and following the instructions:
 ```
 fish
 fish_config prompt choose disco
-```
-
-Make it the default shell:
-```
-chsh -s /usr/bin/fish $USER
 ```
 
 Install plugins using the fisher plugin manager, included in this repo as a submodule:
