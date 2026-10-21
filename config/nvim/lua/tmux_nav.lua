@@ -6,8 +6,10 @@ local dirs = {
   Right = { 'l', '-R' },
 }
 
--- Modes in which navigation works (normal, visual+select, insert)
-local modes = { 'n', 'v', 'i' }
+-- Modes in which navigation works (normal, visual, insert)
+-- Select mode is excluded on purpose: snippet engines put you in it to type over
+-- placeholders, where Ctrl-h/j/k/l and Alt+arrows should keep their default meaning.
+local modes = { 'n', 'x', 'i' }
 
 -- Key telling a Neovim in the destination pane to jump to the edge we entered from
 local entry_key = {
