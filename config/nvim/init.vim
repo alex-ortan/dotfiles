@@ -47,6 +47,9 @@ set diffopt+=iwhiteall  " ignore all whitespace differences
 " Fuzzy CLI completion
 set wildoptions+=fuzzy
 
+" Load script for tmux navigation
+lua require("tmux_nav")
+
 
 "" ==============================================================================
 "" PLUGINS
