@@ -53,6 +53,17 @@ for name, d in pairs(dirs) do
   local go = navigate(d[1], d[2])
   vim.keymap.set(modes, '<M-' .. name .. '>', go, { silent = true })
   vim.keymap.set(modes, '<C-' .. d[1] .. '>', go, { silent = true })
+
+  -- Operator-pending / command-line: an unmapped Alt+arrow acts as <Esc> + arrow
+  -- (cancels, then moves the cursor). Cancel the pending state, then navigate.
+  vim.keymap.set('o', '<M-' .. name .. '>', function()
+    vim.schedule(go)
+    return '<Esc>'
+  end, { expr = true, silent = true })
+  vim.keymap.set('c', '<M-' .. name .. '>', function()
+    vim.schedule(go)
+    return '<C-c>'
+  end, { expr = true, silent = true })
 end
 
 -- Alt+Shift+arrow: jump to the far edge (sent by tmux, or by the code above,
