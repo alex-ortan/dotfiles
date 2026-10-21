@@ -6,6 +6,9 @@ local dirs = {
   Right = { 'l', '-R' },
 }
 
+-- Modes in which navigation works (normal, visual+select, insert)
+local modes = { 'n', 'v', 'i' }
+
 -- Key telling a Neovim in the destination pane to jump to the edge we entered from
 local entry_key = {
   ['-L'] = 'M-S-Right', ['-R'] = 'M-S-Left',
@@ -46,9 +49,8 @@ end
 
 for name, d in pairs(dirs) do
   local go = navigate(d[1], d[2])
-  vim.keymap.set({ 'n', 'i', 'v' }, '<M-' .. name .. '>', go, { silent = true })
-  vim.keymap.set('n', '<C-w><' .. name .. '>', go, { silent = true })
-  vim.keymap.set({ 'n', 'x', 'i' }, '<C-' .. d[1] .. '>', go, { silent = true })
+  vim.keymap.set(modes, '<M-' .. name .. '>', go, { silent = true })
+  vim.keymap.set(modes, '<C-' .. d[1] .. '>', go, { silent = true })
 end
 
 -- Alt+Shift+arrow: jump to the far edge (sent by tmux, or by the code above,
