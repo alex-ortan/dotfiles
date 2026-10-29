@@ -38,7 +38,7 @@ set shiftwidth=4    " Number of spaces to use for each step of (auto)indent
 set expandtab       " convert tab characters to spaces
 
 " Add vertical line
-:set colorcolumn=120    " highlight column after 120 characters to 
+:set colorcolumn=89,115    " highlight columns after 88 and 114 characters respectively
 :highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 

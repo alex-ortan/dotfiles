@@ -35,7 +35,7 @@ let g:python_indent.continue = 'shiftwidth()'
 let g:python_indent.open_paren = 'shiftwidth()'
 
 " Add vertical line
-:set colorcolumn=120    " highlight column after 120 characters to 
+:set colorcolumn=89,115    " highlight columns after 88 and 114 characters respectively
 :highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " Disable mouse
