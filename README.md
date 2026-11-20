@@ -83,7 +83,6 @@ Install dotfiles with dotpy. If using bash, run:
 env $(cat .secrets) python3 dotpy/dot.py link default
 env $(cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
 python3 dotpy/dot.py link --prefix "" --home ~/.claude claude
-
 ```
 If using fish, run:
 ```fish

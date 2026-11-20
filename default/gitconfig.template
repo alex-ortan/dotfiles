@@ -17,10 +17,7 @@
     sslCAinfo = $ROOT_CA
 
 [core]
-	filemode = false
 	eol = lf
-
-[core]
 	autocrlf = input
 
 [mergetool]
