@@ -82,12 +82,14 @@ Install dotfiles with dotpy. If using bash, run:
 ```bash
 env $(cat .secrets) python3 dotpy/dot.py link default
 env $(cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
+python3 dotpy/dot.py link --prefix "" --home ~/.claude claude
 
 ```
 If using fish, run:
 ```fish
 env (cat .secrets) python3 dotpy/dot.py link default
 env (cat .secrets) python3 dotpy/dot.py link --prefix "" --home ~/.config -r config
+python3 dotpy/dot.py link --prefix "" --home ~/.claude claude
 ```
 These commands are idempotent - meaning that you can rerun them without side effects. The `-r` renders `.template` files in subfolders, which `config/environment.d` needs.
 
