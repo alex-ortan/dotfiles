@@ -36,8 +36,12 @@ Install Tools and Packages
     ln -s ~/nvim-linux-x86_64.appimage ~/.local/bin/nvim
     command -v nvim
     ```
-7. Install dotfiles
-8. Improvements:
+7. Install Claude code
+    ```
+    curl -fsSL https://claude.ai/install.sh | bash
+    ```
+8. Install dotfiles
+9. Improvements:
     - install language server in nvim
 
 
